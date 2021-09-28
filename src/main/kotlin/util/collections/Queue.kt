@@ -1,6 +1,10 @@
 package util.collections
 
-class Queue<E> : Collection<E> {
+class Queue<E>() : Collection<E> {
+
+    constructor(initialItems: List<E>) : this() {
+        items.addAll(initialItems)
+    }
 
     private val items: MutableList<E> = emptyList<E>().toMutableList()
 
