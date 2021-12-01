@@ -33,7 +33,7 @@ class `Ship Navigation Tracker Test` {
     }
 }
 
-const val testInput = """F10
+private const val testInput = """F10
 N3
 F7
 R90

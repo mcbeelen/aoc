@@ -6,3 +6,13 @@ I will write the program in Kotlin.
 
 This repo was started for the Advent of Code of 2018 and has been used since.
 
+
+
+
+```
+./prepareForSomeDay.sh 2015 01 NotQuiteLisp
+```
+
+```bash
+./prepareForToday.sh SonarSweep
+```

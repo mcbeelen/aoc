@@ -28,7 +28,7 @@ class `Seating System Test` {
 }
 
 
-const val testInput = """L.LL.LL.LL
+private const val testInput = """L.LL.LL.LL
 LLLLLLL.LL
 L.L.L..L..
 LLLL.LL.LL

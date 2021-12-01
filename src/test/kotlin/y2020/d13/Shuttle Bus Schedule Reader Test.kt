@@ -49,5 +49,5 @@ class `Shuttle Bus Schedule Reader Test` {
 }
 
 
-const val testInput = """939
+private const val testInput = """939
 7,13,x,x,59,x,31,19"""

@@ -18,7 +18,7 @@ class SonarSweepTest {
 }
 
 
-const val testInput = """199
+private const val testInput = """199
 200
 208
 210

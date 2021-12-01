@@ -19,6 +19,6 @@ class `Conways Cubes Test` {
 }
 
 
-const val testInput = """.#.
+private const val testInput = """.#.
 ..#
 ###"""

@@ -35,7 +35,7 @@ class HandheldGamingConsoleTest {
 }
 
 
-const val testInput = """nop +0
+private const val testInput = """nop +0
 acc +1
 jmp +4
 acc +3

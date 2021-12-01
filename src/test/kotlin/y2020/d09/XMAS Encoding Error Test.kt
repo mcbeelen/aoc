@@ -50,7 +50,7 @@ class `XMAS Encoding Error Test` {
 }
 
 
-const val testInput = """35
+private const val testInput = """35
 20
 15
 25

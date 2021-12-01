@@ -5,7 +5,7 @@ import com.natpryce.hamkrest.equalTo
 import org.junit.Test
 import kotlin.Int.Companion.MIN_VALUE
 
-class TemplateTest {
+class NotQuiteLispTest {
 
     @Test
     fun examplePartOne() {
