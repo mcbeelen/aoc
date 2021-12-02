@@ -16,7 +16,7 @@ class AviationLuggageRulesTest {
 
     @Test
     fun partOne() {
-        val input = loadLines("/y2020/d07/input.txt")
+        val input = loadLines("/y2020/d07/input")
         assertThat(countBagColorWhichMayContainShinyGoldBag(input), equalTo(238))
     }
 
@@ -36,7 +36,7 @@ class AviationLuggageRulesTest {
 
     @Test
     fun partTwo() {
-        val input = loadLines("/y2020/d07/input.txt")
+        val input = loadLines("/y2020/d07/input")
         assertThat(countRequiredAmountOfBagsWithin(input, REQUIRED_TYPE_OF_LUGGAGE), equalTo(82930))
     }
 

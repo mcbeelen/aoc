@@ -1,22 +1,41 @@
 package y2021.day02
 
-import util.input.loadLines
+import util.grid.ORIGIN
+import util.grid.ScreenCoordinate
+import util.grid.Vector
 import util.input.parseInput
+import util.puzzle.AdventOfCodePuzzle
 
-class Dive {
-    fun solvePartOne() {
-        val input = loadLines("/y2021/day02/input")
+class Dive(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
-        println(solveFromLines(input));
+
+    override fun solvePartOne(): String {
+        return solvePartOneFromLines(input).toString()
+    }
+
+    override fun solvePartTwo(): String {
+        var currentPosition = ORIGIN
+        var aim = Vector(1, 0)
+
+        input.forEach {
+            val command = it.substringBefore(' ');
+            val units = it.substringAfter(' ').trim().toInt()
+
+            when (command) {
+                "forward" -> currentPosition = currentPosition.next(aim.times(units))
+                "down" -> aim = aim.copy(top = aim.top + units)
+                "up" -> aim = aim.copy(top = aim.top - units)
+           }
+        }
+
+        return "${currentPosition.left * currentPosition.top}"
+
     }
 }
 
-fun solveIt(testInput: String): Int {
-    val lines = parseInput(testInput);
-    return solveFromLines(lines)
-}
 
-private fun solveFromLines(lines: Iterable<String>): Int {
+
+fun solvePartOneFromLines(lines: Iterable<String>): Int {
     val input = lines.map {
         Pair(it.substringBefore(' '), it.substringAfter(' ').trim().toInt())
     }
@@ -24,16 +43,13 @@ private fun solveFromLines(lines: Iterable<String>): Int {
         .mapValues { it.value.map { it.second }.sum() }
 
     val forward = groupBy.getValue("forward")
-    println(forward)
     val down = groupBy.getValue("down")
-    println(down)
     val up = groupBy.getValue("up")
-    println(up)
 
     return (down - up) * forward
 }
 
 fun main() {
-    Dive().solvePartOne()
+    Dive().getAnswers()
 
 }

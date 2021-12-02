@@ -10,9 +10,14 @@ class DiveTest {
 
     @Test
     fun examplePartOne() {
-        assertThat(solveIt(testInput), equalTo(150))
+        val dive = Dive(testInput)
+        assertThat(dive.solvePartOne(), equalTo("150"))
     }
-
+    @Test
+    fun examplePartTwo() {
+        val dive = Dive(testInput)
+        assertThat(dive.solvePartTwo(), equalTo("900"))
+    }
 
 }
 
