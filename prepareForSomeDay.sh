@@ -13,6 +13,6 @@ mkdir -p src/test/kotlin/y${currentYear}/day${currentDay}
 
 sed "s/TemplateTest/${puzzleName}Test/" src/template/TemplateTest.kt > src/test/kotlin/y${currentYear}/day${currentDay}/${puzzleName}Test.kt
 
-# ./fetch_input.sh ${currentYear} ${currentDay} ${targetInputDirectory}
+./fetch_input.sh ${currentYear} ${currentDay} ${targetInputDirectory}
 
 
