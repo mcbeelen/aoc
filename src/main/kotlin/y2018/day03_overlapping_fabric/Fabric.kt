@@ -1,15 +1,16 @@
 package y2018.day03_overlapping_fabric
 
+import util.collections.maxOrDefault
 import util.grid.ScreenCoordinate
 
 class Fabric(private val claims: Iterable<Claim>) {
 
 
     val maxX: Int by lazy {
-        claims.map { it.area.right }.max() ?: 0
+        claims.map { it.area.right }.maxOrDefault(0)
     }
     val maxY: Int by lazy {
-        claims.map { it.area.bottom }.max() ?: 0
+        claims.map { it.area.bottom }.maxOrDefault(0)
     }
 
 

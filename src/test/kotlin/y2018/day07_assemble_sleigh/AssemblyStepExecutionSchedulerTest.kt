@@ -97,8 +97,8 @@ time: |01234567890123456789012345678901234567890123456789|0123456789012345678901
             Pair(step.name.toString(), step.duration())
         } else {
             val maxBy = instruction
-                    .map { Pair(it.before, findMinimumTimeNeededToAssemble(assembleInstructions, it.before)) }
-                    .maxBy { it.second.second }!!
+                .map { Pair(it.before, findMinimumTimeNeededToAssemble(assembleInstructions, it.before)) }
+                .maxByOrNull { it.second.second }!!
 
             println("CriticalPath to ${step.name} is via ${maxBy.first.name} and takes ${maxBy.second} + ${step.duration()} = ${step.duration() + maxBy.second.second}")
 

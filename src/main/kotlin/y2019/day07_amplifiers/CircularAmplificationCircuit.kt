@@ -110,8 +110,8 @@ fun findMaxThrusterSignalInCircularConfiguration(sourceCode: String): Value {
 
     val phaseSettings = listOf(5, 6, 7, 8, 9)
     return generatePermutations(phaseSettings)
-            .map { phaseSetting -> calculateThrustSignalInCircularConfiguration(byteCode, phaseSetting) }
-            .max()!!
+        .map { phaseSetting -> calculateThrustSignalInCircularConfiguration(byteCode, phaseSetting) }
+        .maxOrNull()!!
 
 }
 

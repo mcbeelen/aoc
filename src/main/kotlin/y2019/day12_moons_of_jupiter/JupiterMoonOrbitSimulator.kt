@@ -88,7 +88,7 @@ fun totalAmountOfEnergyAfterSteps(orbitScans: String, numberOfSteps: Int): Int {
     var orbit = readOrbit(orbitScans);
     for (i in 0 until numberOfSteps) {
         orbit = orbit.processStep()
-        plotX(orbit)
+        // plotX(orbit)
     }
     return orbit.calculateTotalAmountOfEnergy()
 }

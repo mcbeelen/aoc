@@ -94,8 +94,8 @@ class LinearAmplificationCircuit(
 fun findMaxThrustSignalInLinearConfiguration(program: ByteCode): Value {
     val phaseSettings = listOf(0, 1, 2, 3, 4)
     return generatePermutations(phaseSettings)
-            .map { phaseSetting -> calculateThrustSignalInLinearConfiguration(program, phaseSetting) }
-            .max()!!
+        .map { phaseSetting -> calculateThrustSignalInLinearConfiguration(program, phaseSetting) }
+        .maxOrNull()!!
 }
 
 fun calculateThrustSignalInLinearConfiguration(program: ByteCode, phaseSetting: List<Int>): Value {

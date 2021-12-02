@@ -121,7 +121,7 @@ fun parseNanobot(nanoInput: String): Nanobot {
 }
 
 
-fun rangeOf(values: Collection<Int>) = values.minBy { it }!! .. values.maxBy { it }!!
+fun rangeOf(values: Collection<Int>) = values.minByOrNull { it }!! .. values.maxByOrNull { it }!!
 
 
 inline class Quantity(val value: Int)
@@ -134,7 +134,7 @@ class NanobotPartOneSolver {
 
             val time = measureTimeMillis {
                 val formation = parseFormation(NANOBOTS_FORMATION)
-                val botWithBiggestRange = formation.bots.maxBy { it.range }!!
+                val botWithBiggestRange = formation.bots.maxByOrNull { it.range }!!
                 val numberOfBotsInRange = formation.bots.filter { isBotWithinRangeOf(it, botWithBiggestRange) }
                         .count()
 

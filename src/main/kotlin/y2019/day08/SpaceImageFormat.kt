@@ -105,7 +105,7 @@ internal fun partOne(sifEncodedImage: String): Int {
                 val zeros = countZeros(it)
                 Pair(it, zeros)
             }
-            .minBy { it.second }
+            .minByOrNull { it.second }
 
     val pixesOnLayer = layerWithFewestZeros!!.first
     val ones = pixesOnLayer.count { it == '1' }

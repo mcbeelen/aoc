@@ -1,5 +1,7 @@
 package util.grid
 
+import util.collections.maxOrDefault
+import util.collections.minOrDefault
 import util.grid.Direction.DOWN
 import util.grid.Direction.LEFT
 import util.grid.Direction.RIGHT
@@ -71,12 +73,12 @@ data class ScreenCoordinate(val left: Int = 0, val top: Int = 0) : Comparable<Sc
     }
 }
 
-fun findMaxX(locations: Set<ScreenCoordinate>) = locations.map { it.left }.max() ?: Int.MIN_VALUE
-fun findMaxY(locations: Set<ScreenCoordinate>) = locations.map { it.top }.max() ?: Int.MIN_VALUE
+fun findMaxX(locations: Set<ScreenCoordinate>) = locations.map { it.left }.maxOrDefault()
+fun findMaxY(locations: Set<ScreenCoordinate>) = locations.map { it.top }.maxOrDefault()
 
 
-fun findMinX(locations: Set<ScreenCoordinate>) = locations.map { it.left }.min() ?: Int.MIN_VALUE
-fun findMinY(locations: Set<ScreenCoordinate>) = locations.map { it.top }.min() ?: Int.MIN_VALUE
+fun findMinX(locations: Set<ScreenCoordinate>) = locations.map { it.left }.minOrDefault()
+fun findMinY(locations: Set<ScreenCoordinate>) = locations.map { it.top }.minOrDefault()
 
 
 class CoordinatesInReadingOrder : Comparator<ScreenCoordinate> {

@@ -11,13 +11,13 @@ class Sky(private val stars: List<Star>) {
 
     fun height(): Height {
         val yCoordinates = stars.map { it.position.y }
-        return Height(yCoordinates.min()!!..yCoordinates.max()!!)
+        return Height(yCoordinates.minOrNull()!!..yCoordinates.maxOrNull()!!)
 
     }
 
     fun width(): Width {
         val xCoordinates = stars.map { it.position.x }
-        return Width(xCoordinates.min()!!..xCoordinates.max()!!)
+        return Width(xCoordinates.minOrNull()!!..xCoordinates.maxOrNull()!!)
     }
 
 }

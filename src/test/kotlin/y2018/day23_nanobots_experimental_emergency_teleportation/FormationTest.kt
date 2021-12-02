@@ -173,7 +173,7 @@ class FormationTest {
 
         val sectorsWithNumberOfBots = botsWithSideToOrigin.bots.map { it.sector }.groupingBy { it }.eachCount()
 
-        println(sectorsWithNumberOfBots.maxBy { it.value })
+        println(sectorsWithNumberOfBots.maxByOrNull { it.value })
 
 
 

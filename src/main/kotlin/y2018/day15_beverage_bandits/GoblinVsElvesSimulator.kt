@@ -86,8 +86,8 @@ data class GoblinVsElvesSimulator(
         }
 
         val reachableSquaresWithShortestPath = squaresInRangeOfEnemies
-                .associateWith { shortestPathTo(it) }
-                .filter { it.value != null }
+            .associateWith { shortestPathTo(it) }
+            .filter { it.value != null }
 
         if (reachableSquaresWithShortestPath.isEmpty()) {
             return null
@@ -95,16 +95,16 @@ data class GoblinVsElvesSimulator(
 
 
         val numberOfStepsToClosestTargetSquare = reachableSquaresWithShortestPath.values
-                .map { it!!.calculateDistance() }
-                .min()
+            .map { it!!.calculateDistance() }
+            .minOrNull()
 
         val targetSquareReachableWithFewestNumberOfSteps = reachableSquaresWithShortestPath
-                .filter { it.value!!.calculateDistance() == numberOfStepsToClosestTargetSquare }
+            .filter { it.value!!.calculateDistance() == numberOfStepsToClosestTargetSquare }
 
 
         val chosenTargetSquare = targetSquareReachableWithFewestNumberOfSteps
-                .toSortedMap(coordinatesInReadingOrder)
-                .firstKey()
+            .toSortedMap(coordinatesInReadingOrder)
+            .firstKey()
 
         // plotChosenPath(openSpaces, combatants, squaresInRangeOfEnemies, reachableSquaresWithShortestPath, targetSquareReachableWithFewestNumberOfSteps, chosenTargetSquare)
 
@@ -133,15 +133,15 @@ data class GoblinVsElvesSimulator(
 
     fun findAdjacentEnemyWithFewestHitPoints(): Combatant {
         val adjacentEnemies = combatants
-                .filter { it.type != activeCombatant.type }
-                .filter { it.isAdjacentTo(activeCombatant) }
+            .filter { it.type != activeCombatant.type }
+            .filter { it.isAdjacentTo(activeCombatant) }
 
-        val fewestNumberOfHitPoints = adjacentEnemies.map { it.hitPoints }.min()!!
+        val fewestNumberOfHitPoints = adjacentEnemies.map { it.hitPoints }.minOrNull()!!
 
         return adjacentEnemies
-                .filter { it.hitPoints == fewestNumberOfHitPoints }
-                .sortedWith(combatantInBattleOrder)
-                .first()
+            .filter { it.hitPoints == fewestNumberOfHitPoints }
+            .sortedWith(combatantInBattleOrder)
+            .first()
 
     }
 

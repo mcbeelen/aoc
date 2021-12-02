@@ -26,8 +26,8 @@ class NanobotTest {
     @Test
     fun itShouldDetermineTheBiggestBotToBeAtZeroZeroZero() {
 
-        val bots : List<Nanobot> = PART_ONE_EXAMPLE_BOTS.trimIndent().lines().map { parseNanobot(it) }
-        val botWithBiggestRange = bots.maxBy { it.range }!!
+        val bots: List<Nanobot> = PART_ONE_EXAMPLE_BOTS.trimIndent().lines().map { parseNanobot(it) }
+        val botWithBiggestRange = bots.maxByOrNull { it.range }!!
 
         assertThat(botWithBiggestRange.point, equalTo(Point(0, 0, 0)))
 

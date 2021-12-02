@@ -28,7 +28,7 @@ fun findLengthOfShortestPathToFurthestRoom(facility: Facility): Int {
     val furthestFoundRoom = facility.map
             .filter { it.value is Room }
             .map { Pair(it.value, Pathfinder(facility).findShortestPath(origin, it.value as Room)!!.calculateDistance()) }
-            .maxBy { it.second }
+            .maxByOrNull { it.second }
 
     println("Found the furthest room to be at: ${furthestFoundRoom!!.first} with a distance of ${furthestFoundRoom.second} ")
     return furthestFoundRoom.second

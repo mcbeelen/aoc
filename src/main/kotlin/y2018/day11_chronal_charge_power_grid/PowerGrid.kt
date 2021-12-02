@@ -26,7 +26,7 @@ class PowerGrid(private val gridSerialNumber: Int) {
                     sizeSquareMap[Pair(screenCoordinate, size)] = totalPowerLevel
                 }
 
-        return sizeSquareMap.maxBy { it.value }!!.key
+        return sizeSquareMap.maxByOrNull { it.value }!!.key
 
     }
 
@@ -43,7 +43,7 @@ class PowerGrid(private val gridSerialNumber: Int) {
             }
         }
 
-        return squares.maxBy { it.value }!!.toPair()
+        return squares.maxByOrNull { it.value }!!.toPair()
 
 
     }

@@ -66,7 +66,7 @@ class SneakInOpportunityFinder {
 
         val minuteWithFrequencePerGuard = shiftsPerGuard
                 .mapValues { findMinuteWithMostNaps(it.value) }
-                .maxBy { it.component2().second }
+                .maxByOrNull { it.component2().second }
 
 
 
@@ -96,7 +96,7 @@ class SneakInOpportunityFinder {
         // Find Guard that sleeps the most
         val guardWhichSleepsTheMost = shiftsPerGuard
                 .mapValues { sumMinutesAsleep(it.value) }
-                .maxBy { it.value }?.key ?: Guard(MIN_VALUE)
+                .maxByOrNull { it.value }?.key ?: Guard(MIN_VALUE)
 
 
         // Find minute that guard is likely to be asleep
@@ -112,7 +112,7 @@ class SneakInOpportunityFinder {
                 .map { Minute(it) }
                 .groupBy { it }
                 .mapValues { countShiftsWhileAsleepAtMinute(shiftsOfSleepyGuard, it.key) }
-                .maxBy { it.value }
+                .maxByOrNull { it.value }
 
         if (maxBy != null) {
             return Pair(maxBy.key, countShiftsWhileAsleepAtMinute(shiftsOfSleepyGuard, maxBy.key))

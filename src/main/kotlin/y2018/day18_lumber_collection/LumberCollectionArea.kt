@@ -25,9 +25,9 @@ data class LumberCollectionArea(private val areaMap: Map<ScreenCoordinate, Acre>
         return count
     }
 
-    val maxX: Int by lazy { areaMap.map { it.key.left }.max() ?: Int.MIN_VALUE }
+    val maxX: Int by lazy { areaMap.map { it.key.left }.maxOrNull() ?: Int.MIN_VALUE }
 
-    val maxY: Int by lazy { areaMap.map { it.key.top }.max() ?: Int.MIN_VALUE }
+    val maxY: Int by lazy { areaMap.map { it.key.top }.maxOrNull() ?: Int.MIN_VALUE }
 
 
 }

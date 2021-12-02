@@ -60,7 +60,7 @@ fun reduce(polymer: String): Pair<Char, String> {
     val minBy = ('a'..'z')
             .map { it to removeUnitsOfSameType(polymer, it) }.toMap()
             .mapValues { react(it.value) }
-            .minBy { it.value.length }
+            .minByOrNull { it.value.length }
     return minBy?.toPair() ?: Pair('_', "")
 
 }

@@ -89,7 +89,7 @@ class SafestCoordinateFinderTest {
 
         assertThat(finiteAreas.count(), equalTo(2))
 
-        assertThat(finiteAreas.maxBy { it.pointClosestToThisTarget.size }!!.targetCoordinate, equalTo(E))
+        assertThat(finiteAreas.maxByOrNull { it.pointClosestToThisTarget.size }!!.targetCoordinate, equalTo(E))
 
     }
 

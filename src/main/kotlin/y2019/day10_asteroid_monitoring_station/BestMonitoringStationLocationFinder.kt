@@ -21,7 +21,7 @@ fun findBestMonitoringStationLocation(fieldDefinition: String): AsteroidMonitori
 
 private fun findBestMonitoringLocation(asteroidMap: AsteroidMap): AsteroidMonitoringLocation {
     val map = asteroidMap.asteroids.map { toAsteroidMonitoringLocation(it, asteroidMap) }
-    return map.maxBy { it.second }!!
+    return map.maxByOrNull { it.second }!!
 }
 
 fun toAsteroidMonitoringLocation(coordinate: ScreenCoordinate, asteroidMap: AsteroidMap): AsteroidMonitoringLocation {

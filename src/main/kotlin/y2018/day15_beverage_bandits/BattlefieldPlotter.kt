@@ -9,7 +9,7 @@ fun plot(situation: GoblinVsElvesSimulator) {
     println("Situation after ${situation.numberOfCompletedRoundsOfBattle}:")
     println()
 
-    val size = situation.openSpaces.map { it.left }.max()!! + 1
+    val size = situation.openSpaces.map { it.left }.maxOrNull()!! + 1
     for (y in 0..size) {
         for (x in 0..size) {
             when {
@@ -42,7 +42,7 @@ fun plotChosenPath(openSpaces: Set<ScreenCoordinate>,
                    targetSquareReachableWithFewestNumberOfSteps: Map<ScreenCoordinate, Path<BattleCoordinate>?>,
                    chosenTargetSquare: ScreenCoordinate) {
 
-    val size = openSpaces.map { it.left }.max()!! + 1
+    val size = openSpaces.map { it.left }.maxOrNull()!! + 1
     for (y in 0..size) {
         for (x in 0..size) {
             when {

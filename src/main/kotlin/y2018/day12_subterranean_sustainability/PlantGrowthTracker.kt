@@ -48,13 +48,13 @@ internal tailrec fun generateNextGenerations(currentGeneration: PlantGrowthTrack
 }
 
 fun fromStart(nextConfiguration: Set<Int>) =
-        (nextConfiguration.min()!! .. nextConfiguration.max()!!)
+    (nextConfiguration.minOrNull()!!..nextConfiguration.maxOrNull()!!)
             .map{ if (nextConfiguration.contains(it)) { '#' } else { '.' }}
             .joinToString("")
 
 
 fun generateNextGeneration(currentGeneration: PlantGrowthTracker): PlantGrowthTracker {
-    val nextSetOfPotsWithPlants = (currentGeneration.potsWithPlants.min()!! - 2..currentGeneration.potsWithPlants.max()!! + 2)
+    val nextSetOfPotsWithPlants = (currentGeneration.potsWithPlants.minOrNull()!! - 2..currentGeneration.potsWithPlants.maxOrNull()!! + 2)
             .filter { potIndex ->
                 currentGeneration.transformation.any { transformation -> transformation.isApplicable(potIndex, currentGeneration.potsWithPlants) }
             }

@@ -10,7 +10,7 @@ fun plotCave(cave: Cave, path: Path<ReachedRegion>) {
 
     val caveMap = cave.caveMap
 
-    val maxX = path.vertices.map { it.region.location.left }.max() ?: 40
+    val maxX = path.vertices.map { it.region.location.left }.maxOrNull() ?: 40
 
     for (y in 0..findMaxY(caveMap.keys)) {
         for (x in 0..maxX) {

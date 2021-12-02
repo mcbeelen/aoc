@@ -19,7 +19,7 @@ fun findSizeOfLargestArea(coordinatesInput: String): Int {
 
     val finiteAreas = targetCoordinatesWithClosestPoints.filter { isFiniteArea(it.pointClosestToThisTarget, square) }
 
-    val largestFiniteTargetArea = finiteAreas.maxBy { it!!.pointClosestToThisTarget.size }
+    val largestFiniteTargetArea = finiteAreas.maxByOrNull { it.pointClosestToThisTarget.size }
 
     return largestFiniteTargetArea!!.pointClosestToThisTarget.size
 }
@@ -56,7 +56,7 @@ internal fun assignPointsToClosestTarget(square: Square, targetCoordinates: List
 
     val pointWithMinimumDistanceToClosestTarget = square.allPoints()
             .map {
-                val minDistance = pointToTargetWithDistance.row(it).values.minBy { distance -> distance }
+                val minDistance = pointToTargetWithDistance.row(it).values.maxByOrNull { distance -> distance }
                 Pair(it, minDistance)
             }.toMap()
 
@@ -86,7 +86,7 @@ internal fun parseInputIntoTargetCoordinates(coordinatesInput: String) = coordin
         .map { parseXcommaY(it) }
 
 internal fun findClosestTarget(point: ScreenCoordinate, targetCoordinates: List<ScreenCoordinate>) = targetCoordinates
-        .minBy { point.distanceTo(it) }
+        .maxByOrNull { point.distanceTo(it) }
 
 
 fun isFiniteArea(closestPoints: Collection<ScreenCoordinate>, square: Square): Boolean {

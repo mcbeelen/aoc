@@ -268,11 +268,11 @@ class SliceOfLand(private val tilesWithClay: Set<ScreenCoordinate>) {
     }
 
 
-    val minX: Int by lazy { tilesWithClay.map { it.left }.min() ?: Int.MIN_VALUE }
-    val maxX: Int by lazy { tilesWithClay.map { it.left }.max() ?: Int.MIN_VALUE }
+    val minX: Int by lazy { tilesWithClay.map { it.left }.minOrNull() ?: Int.MIN_VALUE }
+    val maxX: Int by lazy { tilesWithClay.map { it.left }.maxOrNull() ?: Int.MIN_VALUE }
 
-    val minY: Int by lazy { tilesWithClay.map { it.top }.min() ?: Int.MIN_VALUE }
-    val maxY: Int by lazy { tilesWithClay.map { it.top }.max() ?: Int.MIN_VALUE }
+    val minY: Int by lazy { tilesWithClay.map { it.top }.minOrNull() ?: Int.MIN_VALUE }
+    val maxY: Int by lazy { tilesWithClay.map { it.top }.maxOrNull() ?: Int.MIN_VALUE }
 
     fun countTilesWithWater(): Int {
 

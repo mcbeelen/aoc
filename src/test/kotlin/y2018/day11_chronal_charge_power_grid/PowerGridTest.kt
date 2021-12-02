@@ -2,6 +2,7 @@ package y2018.day11_chronal_charge_power_grid
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import org.junit.Ignore
 import org.junit.Test
 import util.grid.ScreenCoordinate
 
@@ -22,20 +23,20 @@ class PowerGridTest {
             assertThat(it.top, equalTo(45) )
 
         }
+    }
 
+    @Test
+    @Ignore("Too slow")
+    fun partTwo() {
 
-        val anySizeSquare : Pair<ScreenCoordinate, Int> = grid.findTopLevelCornerOfMostPowerfulSquareOfAnySize()
+        val grid = PowerGrid(18)
+        val anySizeSquare: Pair<ScreenCoordinate, Int> = grid.findTopLevelCornerOfMostPowerfulSquareOfAnySize()
 
 
         anySizeSquare.first.let {
-            assertThat(it.left, equalTo(90) )
-            assertThat(it.top, equalTo(269) )
+            assertThat(it.left, equalTo(90))
+            assertThat(it.top, equalTo(269))
         }
         assertThat(anySizeSquare.second, equalTo(16))
-
-
-
-
-
     }
 }
