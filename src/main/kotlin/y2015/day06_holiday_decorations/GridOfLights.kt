@@ -21,7 +21,7 @@ class GridOfBrightLights {
     }
 
     fun countTotalBrightness() = allCoordinates()
-            .sumBy { lightsInGrid.get(it.row, it.column) }
+            .sumOf { lightsInGrid.get(it.row, it.column)!! }
 
     fun processInstruction(instruction: String) {
         val regex = Regex("(turn on|turn off|toggle) (\\d+),(\\d+) through (\\d+),(\\d+)")
@@ -48,7 +48,7 @@ class GridOfBrightLights {
 
     private fun adjustBrightness (rowStart: Int, rowEnd: Int, columnStart: Int, columnEnd: Int, adjust: (current: Int) -> Int) {
         through(rowStart, rowEnd, columnStart, columnEnd).forEach {
-            val newBrightness = adjust(lightsInGrid.get(it.row, it.column))
+            val newBrightness = adjust(lightsInGrid.get(it.row, it.column)!!)
             lightsInGrid.put(it.row, it.column, newBrightness)
         }
     }
@@ -68,7 +68,7 @@ class GridOfLights {
 
 
     fun countNumberOfLightsLit() = allCoordinates()
-            .filter { lightsInGrid.get(it.row, it.column) }
+            .filter { lightsInGrid.get(it.row, it.column)!! }
             .count()
 
     fun processInstruction(instruction: String) {
@@ -97,7 +97,7 @@ class GridOfLights {
 
     private fun switch (rowStart: Int, rowEnd: Int, columnStart: Int, columnEnd: Int, switch: (isLit: Boolean) -> Boolean) {
         through(rowStart, rowEnd, columnStart, columnEnd).forEach {
-            val isLit = switch(lightsInGrid.get(it.row, it.column))
+            val isLit = switch(lightsInGrid.get(it.row, it.column)!!)
             lightsInGrid.put(it.row, it.column, isLit)
         }
     }

@@ -1,12 +1,10 @@
 package util.grid.search
 
-import mu.KotlinLogging
 import java.util.*
 import kotlin.collections.HashMap
 
 abstract class BreadthFirstSearchAlgorithm<V, E>(val graph: Graph<V, E>) where V : Vertex<V>, E : Edge<V> {
 
-    private val logger = KotlinLogging.logger { }
 
     protected val unvisitedVertices: Queue<V> = buildQueue()
 
@@ -86,7 +84,6 @@ abstract class BreadthFirstSearchAlgorithm<V, E>(val graph: Graph<V, E>) where V
                 }
             }
         } else {
-            logger.debug("Discovered a new vertex: ${edge.destination}")
             visitedVertices.put(vertexAtTheEndOfTheEdge.key, vertexAtTheEndOfTheEdge)
 
             unvisitedVertices.offer(edge.destination)
@@ -115,7 +112,6 @@ abstract class BreadthFirstSearchAlgorithm<V, E>(val graph: Graph<V, E>) where V
             currentNode = currentNode.previousVertexes.first()
             stack.push(currentNode)
         }
-
 
         return Path(stack.reversed())
 
