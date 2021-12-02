@@ -1,4 +1,4 @@
-package util.day02_int_code_program
+package y2019.day02_int_code_program
 
 import y2019.computer.IntcodeComputer
 import y2019.computer.Memory
