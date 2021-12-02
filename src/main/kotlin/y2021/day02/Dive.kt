@@ -1,9 +1,7 @@
 package y2021.day02
 
 import util.grid.ORIGIN
-import util.grid.ScreenCoordinate
 import util.grid.Vector
-import util.input.parseInput
 import util.puzzle.AdventOfCodePuzzle
 
 class Dive(testInput: String = "") : AdventOfCodePuzzle(testInput) {
@@ -51,5 +49,4 @@ fun solvePartOneFromLines(lines: Iterable<String>): Int {
 
 fun main() {
     Dive().getAnswers()
-
 }

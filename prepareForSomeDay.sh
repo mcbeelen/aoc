@@ -11,7 +11,8 @@ mkdir -p ${targetInputDirectory}
 mkdir -p src/test/kotlin/y${currentYear}/day${currentDay}
 
 
-sed "s/TemplateTest/${puzzleName}Test/" src/template/TemplateTest.kt > src/test/kotlin/y${currentYear}/day${currentDay}/${puzzleName}Test.kt
+sed "s/PuzzleName/${puzzleName}/g;s/placeholderForPackage/y${currentYear}.day${currentDay}/" src/template/TemplateForPuzzle.kt > src/main/kotlin/y${currentYear}/day${currentDay}/${puzzleName}.kt
+sed "s/PuzzleName/${puzzleName}/g;s/placeholderForPackage/y${currentYear}.day${currentDay}/" src/template/TemplateForPuzzleTest.kt > src/test/kotlin/y${currentYear}/day${currentDay}/${puzzleName}Test.kt
 
 ./fetch_input.sh ${currentYear} ${currentDay} ${targetInputDirectory}
 
