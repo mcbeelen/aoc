@@ -1,21 +1,30 @@
-package template
+package y2021.day01
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
 import org.junit.Test
-import kotlin.Int.Companion.MIN_VALUE
 
 class SonarSweepTest {
 
     @Test
     fun examplePartOne() {
-        assertThat(solveIt(testInput), equalTo(MIN_VALUE))
+        assertThat(solveSonarSweep(testInput), equalTo(7))
     }
 
-    fun solveIt(testInput: String): Int {
-        return MIN_VALUE
+    @Test
+    fun examplePartTwo() {
+        assertThat(solveSlidingSonarSweep(testInput), equalTo(5))
     }
 }
 
 
-private const val testInput = """PASTE_HERE"""
+private const val testInput = """199
+200
+208
+210
+200
+207
+240
+269
+260
+263"""

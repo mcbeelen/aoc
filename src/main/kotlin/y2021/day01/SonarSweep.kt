@@ -1,4 +1,4 @@
-package y2021.d01
+package y2021.day01
 
 import util.input.parseInputToInts
 
