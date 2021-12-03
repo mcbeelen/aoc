@@ -6,7 +6,6 @@ import util.puzzle.AdventOfCodePuzzle
 
 class Dive(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
-
     override fun solvePartOne(): Int {
         return solvePartOneFromLines(input)
     }

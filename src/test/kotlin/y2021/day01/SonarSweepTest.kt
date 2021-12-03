@@ -8,12 +8,24 @@ class SonarSweepTest {
 
     @Test
     fun examplePartOne() {
-        assertThat(solveSonarSweep(testInput), equalTo(7))
+        val puzzle = SonarSweep(testInput)
+        assertThat(puzzle.solvePartOne(), equalTo(7))
+    }
+    @Test
+    fun actualPartOne() {
+        val puzzle = SonarSweep()
+        assertThat(puzzle.solvePartOne(), equalTo(1529))
+    }
+    @Test
+    fun examplePartTwo() {
+        val puzzle = SonarSweep(testInput)
+        assertThat(puzzle.solvePartTwo(), equalTo(5))
     }
 
     @Test
-    fun examplePartTwo() {
-        assertThat(solveSlidingSonarSweep(testInput), equalTo(5))
+    fun actualPartTwo() {
+        val puzzle = SonarSweep()
+        assertThat(puzzle.solvePartTwo(), equalTo(1567))
     }
 }
 

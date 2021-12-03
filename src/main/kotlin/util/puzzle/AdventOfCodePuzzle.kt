@@ -2,6 +2,7 @@ package util.puzzle
 
 import com.google.common.base.Stopwatch
 import util.input.loadLines
+import java.lang.Integer.parseInt
 import java.util.concurrent.TimeUnit
 
 abstract class AdventOfCodePuzzle(
@@ -29,6 +30,8 @@ abstract class AdventOfCodePuzzle(
     open fun solvePartTwo() : Int {
         TODO("No solution for part two yet")
     }
+
+    fun inputAsInts() = input.map { parseInt(it) }
 
     fun getAnswers() {
         val stopwatch = Stopwatch.createStarted()
