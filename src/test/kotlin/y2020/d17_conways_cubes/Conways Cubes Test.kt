@@ -2,6 +2,7 @@ package y2020.d17_conways_cubes
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import org.junit.Ignore
 import org.junit.Test
 
 class `Conways Cubes Test` {
@@ -12,6 +13,7 @@ class `Conways Cubes Test` {
     }
 
     @Test
+    @Ignore("Too slow")
     fun partTwo() {
         assertThat(conwaysGameOfLiveIn4D(y2020d17input), equalTo(2276))
 

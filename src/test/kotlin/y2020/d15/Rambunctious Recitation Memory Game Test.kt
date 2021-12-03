@@ -2,6 +2,7 @@ package y2020.d15
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import org.junit.Ignore
 import org.junit.Test
 
 class `Rambunctious Recitation Memory Game Test` {
@@ -31,10 +32,13 @@ class `Rambunctious Recitation Memory Game Test` {
     }
 
     @Test
+    @Ignore("Too Slow")
     fun examplePartTwo() {
         assertThat(spokenNumber("0,3,6", 30000000), equalTo(175594))
     }
+
     @Test
+    @Ignore("Too Slow")
     fun partTwo() {
         assertThat(spokenNumber("14,8,16,0,1,17", 30000000), equalTo(505))
     }
