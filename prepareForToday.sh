@@ -3,6 +3,6 @@
 
 currentYear=`date +%Y`
 currentDay=`date +%d`
-puzzleName=$3
+puzzleName=$1
 
 ./prepareForSomeDay.sh ${currentYear} ${currentDay} ${puzzleName}

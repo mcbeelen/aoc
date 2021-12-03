@@ -7,11 +7,11 @@ import util.puzzle.AdventOfCodePuzzle
 class Dive(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
 
-    override fun solvePartOne(): String {
-        return solvePartOneFromLines(input).toString()
+    override fun solvePartOne(): Int {
+        return solvePartOneFromLines(input)
     }
 
-    override fun solvePartTwo(): String {
+    override fun solvePartTwo(): Int {
         var currentPosition = ORIGIN
         var aim = Vector(1, 0)
 
@@ -26,7 +26,7 @@ class Dive(testInput: String = "") : AdventOfCodePuzzle(testInput) {
            }
         }
 
-        return "${currentPosition.left * currentPosition.top}"
+        return currentPosition.left * currentPosition.top
 
     }
 }

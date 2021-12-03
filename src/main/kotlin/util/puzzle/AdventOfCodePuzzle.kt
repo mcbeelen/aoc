@@ -15,21 +15,26 @@ abstract class AdventOfCodePuzzle(
         return@lazy testInput.lines()
     }
 
+    open fun getAnswerForPartOne() : String {
+        return solvePartOne().toString()
+    }
 
-
-    open fun solvePartOne() : String {
+    open fun getAnswerForPartTwo() : String {
+        return solvePartTwo().toString()
+    }
+    open fun solvePartOne() : Int {
         TODO("No solution for part one yet")
     }
 
-    open fun solvePartTwo() : String {
+    open fun solvePartTwo() : Int {
         TODO("No solution for part two yet")
     }
 
     fun getAnswers() {
         val stopwatch = Stopwatch.createStarted()
-        println("Part one: " + solvePartOne())
+        println("Part one: " + getAnswerForPartOne())
         println("  (solving took: ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.")
-        println("Part Two: " + solvePartTwo())
+        println("Part Two: " + getAnswerForPartTwo())
         println("  (solving took: ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.")
 
     }
