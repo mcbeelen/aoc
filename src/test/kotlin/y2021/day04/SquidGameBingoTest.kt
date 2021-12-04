@@ -14,9 +14,22 @@ class SquidGameBingoTest {
     }
 
     @Test
+    fun actualPartOne() {
+        val puzzle = SquidGameBingo()
+        assertThat(puzzle.solvePartOne(), equalTo(11536))
+    }
+
+    @Test
     fun examplePartTwo() {
         val puzzle = SquidGameBingo(testInput)
-        assertThat(puzzle.solvePartTwo(), equalTo(""))
+        assertThat(puzzle.solvePartTwo(), equalTo(1924))
+    }
+
+
+    @Test
+    fun actualPartTwo() {
+        val puzzle = SquidGameBingo()
+        assertThat(puzzle.solvePartTwo(), equalTo(1284))
     }
 }
 

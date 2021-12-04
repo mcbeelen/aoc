@@ -37,24 +37,28 @@ class BingoBoard(input : List<String>) {
 
 class SquidGameBingo(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
-    override fun solvePartOne(): Int {
-        val numbersDrawn = input.first().split(',').map { parseInt(it) }.asSequence().iterator()
-        
+    private val bingoBoards: List<BingoBoard> by lazy {
         var bingoBoardsInput = input.drop(2)
         val bingoBoards = ArrayList<BingoBoard>()
         while (bingoBoardsInput.isNotEmpty()) {
             bingoBoards.add(
-                BingoBoard(bingoBoardsInput.take(5)))
+                BingoBoard(bingoBoardsInput.take(5))
+            )
             bingoBoardsInput = bingoBoardsInput.drop(6)
 
         }
+        return@lazy bingoBoards
+    }
+
+    private val numbersDrawn: Iterator<Int> by lazy {
+        input.first().split(',').map { parseInt(it) }.asSequence().iterator()
+    }
+
+    override fun solvePartOne(): Int {
 
         var lastCalledNumber = Int.MIN_VALUE
         while(bingoBoards.none { it.hasBingo() }) {
-            lastCalledNumber = numbersDrawn.next()
-            bingoBoards.forEach {
-                it.mark(lastCalledNumber)
-            }
+            lastCalledNumber = callNextNumber()
         }
 
         val winningBoard = bingoBoards.single { it.hasBingo() }
@@ -64,8 +68,31 @@ class SquidGameBingo(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         return lastCalledNumber * sumOfUnmarkedNumbers
     }
 
+
+
     override fun solvePartTwo(): Int {
-        TODO("Solve me")
+        var lastCalledNumber = Int.MIN_VALUE
+        while(bingoBoards.count { ! it.hasBingo() } > 1) {
+            lastCalledNumber = callNextNumber()
+        }
+
+        val losingBoard = bingoBoards.single { ! it.hasBingo() }
+        while (!losingBoard.hasBingo()) {
+            lastCalledNumber = numbersDrawn.next()
+            losingBoard.mark(lastCalledNumber)
+        }
+        val sumOfUnmarkedNumbers = losingBoard.getAllUnmarkedNumbers()
+            .sum()
+
+        return lastCalledNumber * sumOfUnmarkedNumbers
+    }
+
+    private fun callNextNumber(): Int {
+        val lastCalledNumber = numbersDrawn.next()
+        bingoBoards.forEach {
+            it.mark(lastCalledNumber)
+        }
+        return lastCalledNumber
     }
 }
 
