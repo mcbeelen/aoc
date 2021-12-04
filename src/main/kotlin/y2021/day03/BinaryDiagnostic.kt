@@ -35,7 +35,7 @@ class BinaryDiagnostic(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         return oxygenGeneratorRatingValue * co2ScrubberRatingValue
     }
 
-    private fun filterForFrequencyBasedRating(
+    private tailrec fun filterForFrequencyBasedRating(
         remainingAvailableBinaryNumbers: List<String>,
         currentPosition : Int = 0,
         predicate: (Map<Char, Int>) -> Char): String {
