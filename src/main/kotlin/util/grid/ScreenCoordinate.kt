@@ -88,8 +88,8 @@ class CoordinatesInReadingOrder : Comparator<ScreenCoordinate> {
         }
         return any.top - other.top
     }
-
 }
+
 
 
 fun parseXcommaY(input: String): ScreenCoordinate {
