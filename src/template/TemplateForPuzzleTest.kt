@@ -10,14 +10,29 @@ class PuzzleNameTest {
     @Test
     fun examplePartOne() {
         val puzzle = PuzzleName(testInput)
-        assertThat(puzzle.solvePartOne(), equalTo(""))
+        assertThat(puzzle.solvePartOne(), equalTo(0))
+    }
+
+    @Test
+    @Ignore
+    fun actualPartOne() {
+        val puzzle = PuzzleName()
+        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
     }
 
     @Test
     fun examplePartTwo() {
         val puzzle = PuzzleName(testInput)
-        assertThat(puzzle.solvePartTwo(), equalTo(""))
+        assertThat(puzzle.solvePartTwo(), equalTo(0))
     }
+
+    @Test
+    @Ignore
+    fun actualPartTwo() {
+        val puzzle = PuzzleName()
+        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+    }
+
 }
 
 
