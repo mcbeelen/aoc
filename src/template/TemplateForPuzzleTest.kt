@@ -2,6 +2,7 @@ package placeholderForPackage
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import org.junit.Ignore
 import org.junit.Test
 import kotlin.Int.Companion.MIN_VALUE
 
