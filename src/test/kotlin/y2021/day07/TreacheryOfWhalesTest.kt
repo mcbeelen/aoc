@@ -2,12 +2,11 @@ package y2021.day07
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.junit.Ignore
 import org.junit.Test
 import kotlin.Int.Companion.MIN_VALUE
 
 class TreacheryOfWhalesTest {
-
+    
     @Test
     fun examplePartOne() {
         val puzzle = TreacheryOfWhales(testInput)
@@ -15,7 +14,6 @@ class TreacheryOfWhalesTest {
     }
 
     @Test
-    @Ignore
     fun actualPartOne() {
         val puzzle = TreacheryOfWhales()
         assertThat(puzzle.solvePartOne(), equalTo(343605))
@@ -30,7 +28,7 @@ class TreacheryOfWhalesTest {
     @Test
     fun actualPartTwo() {
         val puzzle = TreacheryOfWhales()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartTwo(), equalTo(96744904))
     }
 
 }
