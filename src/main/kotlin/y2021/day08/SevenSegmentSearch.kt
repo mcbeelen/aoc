@@ -1,5 +1,7 @@
 package y2021.day08
 
+import com.github.shmvanhouten.adventofcode2021.day08.decipherOutput
+import com.github.shmvanhouten.adventofcode2021.day08.toSignal
 import util.puzzle.AdventOfCodePuzzle
 
 class SevenSegmentSearch(testInput: String = "") : AdventOfCodePuzzle(testInput) {
@@ -9,8 +11,6 @@ class SevenSegmentSearch(testInput: String = "") : AdventOfCodePuzzle(testInput)
     }
 
     override fun solvePartOne(): Int {
-        // be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe
-
         return input
             .map { splitInput(it.trim()).second }
             .map { countSimpleDigits(it) }
@@ -26,7 +26,8 @@ class SevenSegmentSearch(testInput: String = "") : AdventOfCodePuzzle(testInput)
     private fun isSimple(it: String) = lengthOfSimpleDigits.contains(it.length)
 
     override fun solvePartTwo(): Int {
-        TODO("Solve me")
+        return input.map { toSignal(it) }
+            .sumOf { decipherOutput(it) }
     }
 }
 
