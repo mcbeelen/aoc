@@ -23,14 +23,13 @@ class SmokeBasinTest {
     @Test
     fun examplePartTwo() {
         val puzzle = SmokeBasin(testInput)
-        assertThat(puzzle.solvePartTwo(), equalTo(0))
+        assertThat(puzzle.solvePartTwo(), equalTo(1134))
     }
 
     @Test
-    @Ignore
     fun actualPartTwo() {
         val puzzle = SmokeBasin()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartTwo(), equalTo(1019700))
     }
 
 }

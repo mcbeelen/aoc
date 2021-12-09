@@ -2,9 +2,13 @@ package util.grid
 
 
 class Grid<T> : HashMap<ScreenCoordinate, T>() {
-    fun neighbors(key: ScreenCoordinate): List<T> {
-        return key.allNeighbors().filter { this.containsKey(it) }.map { this.getValue(it)}
+    fun valuesOfNeighbors(key: ScreenCoordinate): List<T> {
+        return allNeighbors(key).map { it.second }
     }
+
+    fun allNeighbors(key: ScreenCoordinate) = key.allNeighbors()
+        .filter { this.containsKey(it) }
+        .map { Pair(it, this.getValue(it)) }
 }
 
 
