@@ -1,6 +1,11 @@
 package util.grid
 
-class Grid<T> : HashMap<ScreenCoordinate, T>()
+
+class Grid<T> : HashMap<ScreenCoordinate, T>() {
+    fun neighbors(key: ScreenCoordinate): List<T> {
+        return key.allNeighbors().filter { this.containsKey(it) }.map { this.getValue(it)}
+    }
+}
 
 
 fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = '?', charFor: (T) -> Char) {
@@ -28,8 +33,13 @@ fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = '?', charFor: (T) 
 }
 
 fun <T> parseToGrid(gridDefinition: String, fromSymbol: (Char) -> T) : Grid<T> {
+    val lines = gridDefinition.trimIndent().lines()
+    return parseToGrid(lines, fromSymbol)
+}
+
+fun <T> parseToGrid(lines: List<String>, fromSymbol: (Char) -> T): Grid<T> {
     val grid = Grid<T>()
-    gridDefinition.trimIndent().lines().forEachIndexed { topIndex, line ->
+    lines.forEachIndexed { topIndex, line ->
         line.forEachIndexed { leftIndex, c ->
             val coordinate = at(leftIndex, topIndex)
             grid[coordinate] = fromSymbol(c)
