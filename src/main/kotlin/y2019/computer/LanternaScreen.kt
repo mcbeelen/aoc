@@ -9,21 +9,19 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory
 import com.googlecode.lanterna.terminal.Terminal
 import com.googlecode.lanterna.terminal.swing.SwingTerminalFontConfiguration
 import util.grid.ScreenCoordinate
-import y2019.day016_pong.BALL
-import y2019.day016_pong.BLOCK
-import y2019.day016_pong.PADDLE
-import y2019.day016_pong.WALL
+import y2019.day13_pong.*
+
 import java.awt.Font
 
-class LanternaScreen : ScreenOutputStream {
+class LanternaScreen : ScreenOutputStream<Char> {
 
     private var initializing = true
     private var counter = 0
 
     private val screen : Screen = initScreen()
 
-    override fun paint(coordinate: ScreenCoordinate, char: Char) {
-        val textCharacter = formatTextCharacter(char)
+    override fun paint(coordinate: ScreenCoordinate, value: Char) {
+        val textCharacter = formatTextCharacter(value)
         screen.setCharacter(coordinate.left, coordinate.top, textCharacter)
         screen.refresh()
         if (initializing) {

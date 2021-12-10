@@ -2,24 +2,25 @@ package y2019.computer
 
 import util.grid.ScreenCoordinate
 
-interface ScreenOutputStream {
-    fun paint(coordinate: ScreenCoordinate, char: Char)
+interface ScreenOutputStream<T> {
+    fun paint(coordinate: ScreenCoordinate, value: T)
     fun stopScreen() {}
+
 }
 
-class NoOpScreenOutputScreen : ScreenOutputStream {
-    override fun paint(coordinate: ScreenCoordinate, char: Char) {
+class NoOpScreenOutputScreen : ScreenOutputStream<Char> {
+    override fun paint(coordinate: ScreenCoordinate, value: Char) {
         // Do nothing
     }
 
 }
 
-class InmemoryScreenOutputStream : ScreenOutputStream {
+class InmemoryScreenOutputStream : ScreenOutputStream<Char> {
 
     private val buffer: MutableMap<ScreenCoordinate, Char> = HashMap()
 
-    override fun paint(coordinate: ScreenCoordinate, char: Char) {
-        buffer[coordinate] = char
+    override fun paint(coordinate: ScreenCoordinate, value: Char) {
+        buffer[coordinate] = value
     }
 
     fun calculateNumberOfTiles(char: Char): Int = buffer.values.count { it == char }

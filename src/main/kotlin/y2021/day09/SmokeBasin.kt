@@ -12,7 +12,7 @@ data class Point(val location: ScreenCoordinate, val height: Height) {
     constructor(data: Pair<ScreenCoordinate, Int>) : this(data.first, data.second)
 }
 
-class SmokeBasin(testInput: String = "") : AdventOfCodePuzzle(testInput) {
+open class SmokeBasin(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
     private val heightMap = parseToGrid(input) { it.toString().toInt() }
 

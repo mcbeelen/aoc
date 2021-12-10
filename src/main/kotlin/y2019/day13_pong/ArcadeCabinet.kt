@@ -1,4 +1,4 @@
-package y2019.day016_pong
+package y2019.day13_pong
 
 import util.grid.ScreenCoordinate
 import util.grid.at
@@ -10,13 +10,13 @@ import y2019.computer.NoOpScreenOutputScreen
 import y2019.computer.Output
 import y2019.computer.ScreenOutputStream
 import y2019.computer.Value
-import y2019.day016_pong.ArcadeAdapter.State.LEFT
-import y2019.day016_pong.ArcadeAdapter.State.TILE
-import y2019.day016_pong.ArcadeAdapter.State.TOP
+import y2019.day13_pong.ArcadeAdapter.State.LEFT
+import y2019.day13_pong.ArcadeAdapter.State.TILE
+import y2019.day13_pong.ArcadeAdapter.State.TOP
 import kotlin.Int.Companion.MIN_VALUE
 
 
-class ArcadeAdapter(private val screen: ScreenOutputStream, val controller: ScreenOutputStream = NoOpScreenOutputScreen()): Output {
+class ArcadeAdapter(private val screen: ScreenOutputStream<Char>, val controller: ScreenOutputStream<Char> = NoOpScreenOutputScreen()): Output {
 
     enum class State {
         LEFT,
@@ -97,7 +97,7 @@ fun main() {
 }
 
 fun playPong() {
-    val screen : ScreenOutputStream = LanternaScreen()
+    val screen = LanternaScreen()
     val joystick = Joystick()
     val connector = ArcadeAdapter(screen, joystick)
 
@@ -107,14 +107,14 @@ fun playPong() {
     screen.stopScreen();
 }
 
-class Joystick : Input, ScreenOutputStream {
+class Joystick : Input, ScreenOutputStream<Char> {
 
     var columnOfBall = MIN_VALUE
     var columnOfPaddle = MIN_VALUE
     override fun read(): Value = columnOfBall.compareTo(columnOfPaddle).toLong()
 
-    override fun paint(coordinate: ScreenCoordinate, char: Char) {
-        when (char) {
+    override fun paint(coordinate: ScreenCoordinate, value: Char) {
+        when (value) {
             BALL -> columnOfBall = coordinate.left
             PADDLE -> columnOfPaddle = coordinate.left
         }
