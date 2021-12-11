@@ -44,7 +44,7 @@ fun <T> parseToGrid(gridDefinition: String, fromSymbol: (Char) -> T) : Grid<T> {
 fun <T> parseToGrid(lines: List<String>, fromSymbol: (Char) -> T): Grid<T> {
     val grid = Grid<T>()
     lines.forEachIndexed { topIndex, line ->
-        line.forEachIndexed { leftIndex, c ->
+        line.trim().forEachIndexed { leftIndex, c ->
             val coordinate = at(leftIndex, topIndex)
             grid[coordinate] = fromSymbol(c)
         }
