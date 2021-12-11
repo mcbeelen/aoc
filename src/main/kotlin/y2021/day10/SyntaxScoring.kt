@@ -9,17 +9,14 @@ class SyntaxScoring(testInput: String = "") : AdventOfCodePuzzle(testInput) {
     override fun solvePartOne(): Int {
 
         return input.map { toSyntaxError(it) }
-            .filter { it is CorruptedSyntaxError }
-            .map { it as CorruptedSyntaxError }
-            .map { it.firstWrongCharacter.syntaxErrorScore }
-            .sum()
+            .filterIsInstance<CorruptedSyntaxError>()
+            .sumOf { it.firstWrongCharacter.syntaxErrorScore }
     }
 
 
     override fun getAnswerForPartTwo(): String {
         val autocompleteScores = input.map { toSyntaxError(it) }
-            .filter { it is IncompleteSyntaxError }
-            .map { it as IncompleteSyntaxError }
+            .filterIsInstance<IncompleteSyntaxError>()
             .map { toAutoCompleted(it.stack) }
             .map { it.map { it.autoCompletePoints } }
             .map { toAutoCompleteScore(it) }
