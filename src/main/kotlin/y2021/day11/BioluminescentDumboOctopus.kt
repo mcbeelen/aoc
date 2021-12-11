@@ -20,7 +20,6 @@ class BioluminescentDumboOctopus(
         (1 .. numberOfSteps).forEach {
             val pair = performStep(eneryLevels)
             eneryLevels = pair.first
-            println("Step ${it} : ${pair.second} flashes")
             totalNumberOfFlashes += pair.second
         }
         println(totalNumberOfFlashes)
@@ -52,7 +51,18 @@ class BioluminescentDumboOctopus(
     }
 
     override fun solvePartTwo(): Int {
-        TODO("Solve me")
+
+        var eneryLevels = initialEnergyLevelsOfOctopuses.toSortedMap().toMutableMap()
+        val totalNumberOfOctopuses = eneryLevels.size
+        var stepCounter = 0
+        while (true) {
+            stepCounter ++
+            val pair = performStep(eneryLevels)
+            eneryLevels = pair.first
+            if (pair.second == totalNumberOfOctopuses) {
+                return stepCounter
+            }
+        }
     }
 }
 
