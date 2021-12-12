@@ -29,7 +29,7 @@ class PassagePathingTest {
     @Test
     fun actualPartTwo() {
         val puzzle = PassagePathing(maximumNumberOfVisitsToSmallCave = 1)
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartTwo(), equalTo(117509))
     }
 
 }

@@ -24,4 +24,4 @@ class Cave(val name: String) : Vertex<Cave>() {
     }
 }
 
-class Connection(origin: Cave, destination: Cave, distance: Int = 1) : Edge<Cave>(origin, destination, distance)
+class Connection(origin: Cave, destination: Cave) : Edge<Cave>(origin, destination)

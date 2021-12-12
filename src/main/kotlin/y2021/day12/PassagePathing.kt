@@ -9,6 +9,13 @@ class PassagePathing(
 
     override fun solvePartOne(): Int {
 
+        val (caveSystem, start) = parseInputIntoCaveSystem()
+        val initialPath = Path<Cave>().extendWith(start)
+        val foundPaths = exploreCaves(caveSystem, start, initialPath)
+        return foundPaths.size
+    }
+
+    private fun parseInputIntoCaveSystem(): Pair<CaveSystem, Cave> {
         val caves = HashMap<String, Cave>()
         val connections = ArrayList<Connection>()
 
@@ -25,26 +32,21 @@ class PassagePathing(
         val caveSystem = CaveSystem(connections)
 
         val start = caves.getValue("start")
-        val initialPath = Path<Cave>().extendWith(start)
-
-        val exploreCaves = exploreCaves(caveSystem, start, initialPath)
-
-        val uniquePaths = exploreCaves.map { path -> path.vertices.joinToString { it.name } }.toSortedSet()
-        return uniquePaths.size
+        return Pair(caveSystem, start)
     }
 
     private fun exploreCaves(
         caveSystem: CaveSystem,
-        currentVertex: Cave,
+        currentCave: Cave,
         pathFromStartToCurrentVertex: Path<Cave>) : List<Path<Cave>> {
 
         val foundPaths = emptyList<Path<Cave>>().toMutableList()
-        val potentialNextVertexes = caveSystem.findNeighbours(currentVertex)
-        potentialNextVertexes.forEach {
-            if (it.origin == currentVertex) {
+        val connectionsToCurrentCave = caveSystem.findNeighbours(currentCave)
+        connectionsToCurrentCave.forEach {
+            if (it.origin == currentCave) {
                 exploreFurther(pathFromStartToCurrentVertex, foundPaths, caveSystem, it.destination)
             }
-            if (it.destination == currentVertex) {
+            if (it.destination == currentCave) {
                 exploreFurther(pathFromStartToCurrentVertex, foundPaths, caveSystem, it.origin)
             }
         }
@@ -62,33 +64,39 @@ class PassagePathing(
         if (targetCave.name == "start") {
             return
         }
-
         val extendedPath = pathFromStartToCurrentVertex.extendWith(targetCave)
         if (targetCave.name == "end") {
             foundPaths.add(extendedPath)
-        } else if (
-             (targetCave.isBigCave || isAllowedToVisitSmallTargetCave(pathFromStartToCurrentVertex, targetCave)
-        )) {
+        } else if (targetCave.isBigCave ||
+                   isAllowedToVisitSmallTargetCave(pathFromStartToCurrentVertex, targetCave)) {
             foundPaths.addAll(exploreCaves(caveSystem, targetCave, extendedPath))
         }
     }
 
     private fun isAllowedToVisitSmallTargetCave(
         pathFromStartToCurrentVertex: Path<Cave>,
-        targetCave: Cave
-    ) : Boolean {
+        targetCave: Cave ) : Boolean {
+
         if (maximumNumberOfVisitsToSmallCave == 0) {
             return pathFromStartToCurrentVertex.vertices.none { it.name == targetCave.name }
         }
-        if (pathFromStartToCurrentVertex.vertices.count { it.name == targetCave.name } == 0) {
-            return true
-        }
-        return pathFromStartToCurrentVertex.vertices
+
+        return isFirstVisitToTargetCave(pathFromStartToCurrentVertex, targetCave)
+               || isFirstSmallCaveToBeVisitedTwice(pathFromStartToCurrentVertex)
+    }
+
+    private fun isFirstVisitToTargetCave(
+        pathFromStartToCurrentVertex: Path<Cave>,
+        targetCave: Cave
+    ) = pathFromStartToCurrentVertex.vertices.count { it.name == targetCave.name } == 0
+
+    private fun isFirstSmallCaveToBeVisitedTwice(pathFromStartToCurrentVertex: Path<Cave>) =
+        pathFromStartToCurrentVertex.vertices
             .filter { it.isSmallCave }
             .groupingBy { it.name }
             .eachCount()
             .none { it.value > maximumNumberOfVisitsToSmallCave }
-    }
+
 
     override fun solvePartTwo(): Int {
         return solvePartOne()
