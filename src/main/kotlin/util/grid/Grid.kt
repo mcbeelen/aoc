@@ -12,13 +12,11 @@ class Grid<T> : HashMap<ScreenCoordinate, T>() {
 }
 
 
-fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = '?', charFor: (T) -> Char) {
+fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = ' ', charFor: (T) -> Char) {
     val findMinY = findMinY(grid.keys)
     val findMaxY = findMaxY(grid.keys)
     val findMinX = findMinX(grid.keys)
     val findMaxX = findMaxX(grid.keys)
-
-
 
     for (y in findMinY..findMaxY) {
         print("${y.toString().padStart(8)}: ")
@@ -26,7 +24,7 @@ fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = '?', charFor: (T) 
             val objectAtXY = grid[at(x, y)]
 
             if (objectAtXY == null) {
-                print('?')
+                print(defaultCharForUnknown)
             } else {
                 print(charFor(objectAtXY))
             }
