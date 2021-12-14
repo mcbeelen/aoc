@@ -67,7 +67,7 @@ class BinaryDiagnostic(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         }.joinToString("")
 
         val leastCommonBits = countedLetters.map {
-            if (it.getValue('0') > it.getValue('1') ) {
+            if (it.getValue('0') < it.getValue('1') ) {
                 '0'
             } else {
                 '1'

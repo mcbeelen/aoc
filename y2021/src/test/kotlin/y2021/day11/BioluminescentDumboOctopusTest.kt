@@ -40,7 +40,7 @@ class BioluminescentDumboOctopusTest {
     @Test
     fun actualPartOne() {
         val puzzle = BioluminescentDumboOctopus()
-        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartOne(), equalTo(1683))
     }
 
     @Test

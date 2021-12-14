@@ -11,7 +11,7 @@ import kotlin.collections.HashSet
 
 class TransparentOrigami(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
-    val dotsOnTransparantPaper : Set<ScreenCoordinate> by lazy {
+    private val dotsOnTransparantPaper : Set<ScreenCoordinate> by lazy {
         val foundDots = HashSet<ScreenCoordinate>().toMutableSet()
         input.forEach {
             if (it.contains(",")) {
@@ -21,7 +21,7 @@ class TransparentOrigami(testInput: String = "") : AdventOfCodePuzzle(testInput)
         return@lazy foundDots
     }
 
-    val foldInstructions : List<Instruction> by lazy {
+    private val foldInstructions : List<Instruction> by lazy {
         val foundInstructions = input.mapNotNull {
             if (it.startsWith("fold along")) {
                 buildInstruction(it)
@@ -40,7 +40,7 @@ class TransparentOrigami(testInput: String = "") : AdventOfCodePuzzle(testInput)
         val foldedPaper = foldInstructions.fold(dotsOnTransparantPaper) { unfoldedPaper, instruction -> performFold(unfoldedPaper, instruction) }
         val grid = Grid<Boolean>()
         foldedPaper.forEach { grid[it] = true }
-        plotGrid(grid) { '#'}
+        plotGrid(grid) { '\u2588' }
         return foldedPaper.size
     }
 
@@ -53,7 +53,6 @@ class TransparentOrigami(testInput: String = "") : AdventOfCodePuzzle(testInput)
     }
 
     private fun foldUp(unfoldedPaper: Set<ScreenCoordinate>, line: Int): Set<ScreenCoordinate> {
-
         val dotsAboveTheFold = unfoldedPaper.filter { it.top < line }.toMutableSet()
         val foldedDots = unfoldedPaper
             .filter { it.top > line }

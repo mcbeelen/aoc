@@ -13,6 +13,12 @@ class BinaryDiagnosticTest {
     }
 
     @Test
+    fun actualPartOne() {
+        val puzzle = BinaryDiagnostic()
+        assertThat(puzzle.solvePartOne(), equalTo(4147524))
+    }
+
+    @Test
     fun examplePartTwo() {
         val puzzle = BinaryDiagnostic(testInput)
         assertThat(puzzle.solvePartTwo(), equalTo(230))

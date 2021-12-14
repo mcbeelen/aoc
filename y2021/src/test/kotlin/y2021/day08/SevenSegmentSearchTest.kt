@@ -39,7 +39,7 @@ class SevenSegmentSearchTest {
     @Test
     fun actualPartTwo() {
         val puzzle = SevenSegmentSearch()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartTwo(), equalTo(1043697))
     }
 
 }
