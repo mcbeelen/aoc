@@ -9,7 +9,10 @@ class Grid<T> : HashMap<ScreenCoordinate, T>() {
     fun allNeighbors(key: ScreenCoordinate) = key.allNeighbors()
         .filter { this.containsKey(it) }
         .map { Pair(it, this.getValue(it)) }
+
+    fun bottomRight() : ScreenCoordinate = ScreenCoordinate(findMaxX(this.keys), findMaxY(this.keys))
 }
+
 
 
 fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = ' ', charFor: (T) -> Char) {
