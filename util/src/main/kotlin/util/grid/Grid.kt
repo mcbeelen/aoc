@@ -2,6 +2,9 @@ package util.grid
 
 
 class Grid<T> : HashMap<ScreenCoordinate, T>() {
+    fun getWidth() = findMaxX(this.keys) + 1
+    fun getHeight() = findMaxY(this.keys) + 1
+
     fun valuesOfNeighbors(key: ScreenCoordinate): List<T> {
         return allNeighbors(key).map { it.second }
     }

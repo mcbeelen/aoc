@@ -2,8 +2,11 @@ package y2021.day15
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
+import com.natpryce.hamkrest.greaterThan
+import com.natpryce.hamkrest.lessThan
 import org.junit.Ignore
 import org.junit.Test
+import util.grid.at
 import kotlin.Int.Companion.MIN_VALUE
 
 class ChitonCaveTest {
@@ -23,14 +26,22 @@ class ChitonCaveTest {
     @Test
     fun examplePartTwo() {
         val puzzle = ChitonCave(testInput, true)
+        assertThat(puzzle.enlargedGrid.getValue(at(0, 49)), equalTo(6))
+        assertThat(puzzle.enlargedGrid.getValue(at(1, 49)), equalTo(7))
+        assertThat(puzzle.enlargedGrid.getValue(at(49, 49)), equalTo(9))
+        assertThat(puzzle.enlargedGrid.getValue(at(49, 0)), equalTo(6))
+
         assertThat(puzzle.solvePartTwo(), equalTo(315))
     }
 
     @Test
-    @Ignore
+    @Ignore("+11seconds")
     fun actualPartTwo() {
-        val puzzle = ChitonCave()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        val puzzle = ChitonCave(shouldEnlarge = true)
+        assertThat(puzzle.solvePartTwo(), greaterThan(363))
+        assertThat(puzzle.solvePartTwo(), greaterThan(2787))
+        assertThat(puzzle.solvePartTwo(), lessThan(2838))
+        assertThat(puzzle.solvePartTwo(), equalTo(2835))
     }
 
 }
