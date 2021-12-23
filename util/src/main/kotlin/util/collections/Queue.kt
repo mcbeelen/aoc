@@ -10,12 +10,22 @@ class Queue<E> : Collection<E> {
         items.add(element)
     }
 
+    fun addAll(elements: Iterable<E>) {
+        elements.forEach { this.enqueue(it) }
+    }
+
     fun dequeue(): E {
         if (this.isEmpty()) {
             throw IllegalStateException("Did not check isEmpty() before calling dequeue")
         }
         return items.removeAt(0)
+    }
 
+    fun dequeue(n: Int): List<E> {
+        if (this.isEmpty()) {
+            throw IllegalStateException("Did not check isEmpty() before calling dequeue")
+        }
+        return (0 until  n).map { items.removeAt(0) }
     }
 
     fun peek(): E? {
@@ -36,7 +46,4 @@ class Queue<E> : Collection<E> {
     override fun isEmpty() = items.isEmpty()
 
     override fun iterator() = items.iterator()
-
-
-
 }
