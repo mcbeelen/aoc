@@ -7,12 +7,12 @@ fun fuelRequired(mass: Int): Int {
     return mass / 3 - 2
 }
 
-fun realFuelRequired(mass: Int) : Int {
+tailrec fun realFuelRequired(mass: Int, totalMassOfFuel: Int = 0) : Int {
     val fuelRequired = max(fuelRequired(mass), 0)
     if (fuelRequired == 0) {
-        return fuelRequired
+        return totalMassOfFuel
     }
-    return fuelRequired + realFuelRequired(fuelRequired)
+    return realFuelRequired(fuelRequired, fuelRequired + totalMassOfFuel)
 }
 
 fun main() {

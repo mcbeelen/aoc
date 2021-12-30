@@ -10,27 +10,27 @@ class ArithmeticLogicUnitTest {
 
     @Test
     fun examplePartOne() {
-        val puzzle = ArithmeticLogicUnit(testInput)
+        val puzzle = ArithmeticLogicUnitPuzzle(testInput)
         assertThat(puzzle.solvePartOne(), equalTo(0))
     }
 
     @Test
     @Ignore
     fun actualPartOne() {
-        val puzzle = ArithmeticLogicUnit()
+        val puzzle = ArithmeticLogicUnitPuzzle()
         assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
     }
 
     @Test
     fun examplePartTwo() {
-        val puzzle = ArithmeticLogicUnit(testInput)
+        val puzzle = ArithmeticLogicUnitPuzzle(testInput)
         assertThat(puzzle.solvePartTwo(), equalTo(0))
     }
 
     @Test
     @Ignore
     fun actualPartTwo() {
-        val puzzle = ArithmeticLogicUnit()
+        val puzzle = ArithmeticLogicUnitPuzzle()
         assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
     }
 

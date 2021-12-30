@@ -1,19 +1,19 @@
 package y2021.day24
 
-import util.puzzle.AdventOfCodePuzzle
+import y2021.day13.Instruction
 
-class ArithmeticLogicUnit(testInput: String = "") : AdventOfCodePuzzle(testInput) {
+class ArithmeticLogicUnit(val instructions : List<String>) {
 
-    override fun solvePartOne(): Int {
-        println(input[0])
-        TODO("Solve me")
+    private var w = 0
+    private var x = 0
+    private var y = 0
+    private var z = 0
+
+    fun isValidModelNumber(candidate: String) : Boolean {
+
+        return isValid()
     }
 
-    override fun solvePartTwo(): Int {
-        TODO("Solve me")
-    }
-}
+    private fun isValid() = z == 0
 
-fun main() {
-    ArithmeticLogicUnit().getAnswers()
 }
