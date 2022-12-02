@@ -6,14 +6,14 @@ import java.lang.Integer.parseInt
 import java.util.concurrent.TimeUnit
 
 abstract class AdventOfCodePuzzle(
-    val testInput: String = ""
+    val puzzleInput: String = ""
     ) {
 
     val input : List<String> by lazy {
-        if (testInput.isBlank()) {
+        if (puzzleInput.isBlank()) {
             return@lazy loadLines(this, "input")
         }
-        return@lazy testInput.lines()
+        return@lazy puzzleInput.lines()
     }
 
     open fun getAnswerForPartOne() : String {
@@ -32,6 +32,9 @@ abstract class AdventOfCodePuzzle(
     }
 
     fun inputAsInts() = input.map { parseInt(it) }
+
+    fun <R> loadTodaysInput (transform: (String) -> R) = input.map(transform)
+
 
     fun getAnswers() {
         val stopwatch = Stopwatch.createStarted()

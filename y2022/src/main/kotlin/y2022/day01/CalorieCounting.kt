@@ -5,7 +5,7 @@ import util.puzzle.AdventOfCodePuzzle
 class CalorieCounting(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
     override fun solvePartOne(): Int {
-        val blockPerElf = testInput.split("\n\n")
+        val blockPerElf = puzzleInput.split("\n\n")
         return blockPerElf.maxOf { sumCaloriesCarriedByElf(it) }
     }
 
@@ -15,7 +15,7 @@ class CalorieCounting(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
 
     override fun solvePartTwo(): Int {
-        val blockPerElf = testInput.split("\n\n")
+        val blockPerElf = puzzleInput.split("\n\n")
         return blockPerElf.map { sumCaloriesCarriedByElf(it) }
             .sortedDescending()
             .take(3)
