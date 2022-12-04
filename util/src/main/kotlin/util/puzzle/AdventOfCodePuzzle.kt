@@ -39,8 +39,8 @@ abstract class AdventOfCodePuzzle(
     fun getAnswers() {
         val stopwatch = Stopwatch.createStarted()
         println("Part one: " + getAnswerForPartOne())
-        println("  (solving this part took: ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.")
+        println("  (solving this part took: ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.)")
         println("Part Two: " + getAnswerForPartTwo())
-        println("  (solving both took: ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.")
+        println("  (solving both took: ${stopwatch.elapsed(TimeUnit.MILLISECONDS)}ms.)")
     }
 }
