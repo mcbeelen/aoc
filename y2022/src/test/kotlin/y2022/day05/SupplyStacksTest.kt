@@ -6,6 +6,7 @@ import org.junit.Ignore
 import org.junit.Test
 import java.util.*
 import kotlin.Int.Companion.MIN_VALUE
+import kotlin.collections.ArrayDeque
 
 class SupplyStacksTest {
 
@@ -13,10 +14,10 @@ class SupplyStacksTest {
     fun isShouldParseInitialStacking() {
         val puzzle = SupplyStacks(testInput)
 
-        val stack : Stack<Crate> = puzzle.stacks.getValue(1)
+        val stack : ArrayDeque<Crate> = puzzle.stacks.getValue(1)
         assertThat(stack.size, equalTo(2))
-        assertThat(stack.pop(), equalTo('N'))
-        assertThat(stack.pop(), equalTo('Z'))
+        assertThat(stack.removeLast(), equalTo('N'))
+        assertThat(stack.removeLast(), equalTo('Z'))
 
         assertThat(puzzle.moveInstructions[0], equalTo(MoveInstruction(1, 2, 1)))
         assertThat(puzzle.moveInstructions[1], equalTo(MoveInstruction(3, 1, 3)))

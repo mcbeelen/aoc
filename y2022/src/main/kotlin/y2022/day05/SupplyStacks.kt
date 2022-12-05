@@ -3,14 +3,16 @@ package y2022.day05
 
 import util.puzzle.AdventOfCodePuzzle
 import java.lang.Integer.parseInt
-import java.util.*
+import java.util.LinkedList
+import kotlin.collections.ArrayDeque
+
 import kotlin.collections.HashMap
 
 typealias Crate = Char
 
 class SupplyStacks(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
-    val stacks = HashMap<Int, Stack<Crate>>()
+    val stacks = HashMap<Int, ArrayDeque<Crate>>()
     val moveInstructions = LinkedList<MoveInstruction>()
     var numberOfStacks = 0
 
@@ -33,25 +35,25 @@ class SupplyStacks(testInput: String = "") : AdventOfCodePuzzle(testInput) {
     }
 
     private fun moveSingleCrate(moveInstruction: MoveInstruction) {
-        val crate = stacks.getValue(moveInstruction.fromIndex).pop()
-        stacks.getValue(moveInstruction.toIndex).push(crate)
+        val crate = stacks.getValue(moveInstruction.fromIndex).removeLast()
+        stacks.getValue(moveInstruction.toIndex).add(crate)
     }
 
 
     private fun moveCratesPerStack(it: MoveInstruction) {
-        val intermediateStack = Stack<Crate>()
+        val intermediateStack = ArrayDeque<Crate>()
         (0 until it.quantity).forEach { _ ->
-            val crate = stacks.getValue(it.fromIndex).pop()
-            intermediateStack.push(crate)
+            val crate = stacks.getValue(it.fromIndex).removeLast()
+            intermediateStack.add(crate)
         }
         (0 until it.quantity).forEach { _ ->
-            val crate = intermediateStack.pop()
-            stacks.getValue(it.toIndex).push(crate)
+            val crate = intermediateStack.removeLast()
+            stacks.getValue(it.toIndex).add(crate)
         }
     }
 
     private fun readMarkingOfTopCrates() = (1..numberOfStacks).joinToString("") { index ->
-        stacks.getValue(index).pop().toString()
+        stacks.getValue(index).last().toString()
     }
 
     private fun parseInputIntoStacksAndMoveInstructions() {
@@ -67,7 +69,7 @@ class SupplyStacks(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         val stackDefinitions = input.subList(0, split).reversed()
         numberOfStacks = (stackDefinitions.get(0).length + 1) / 4
         (1 .. numberOfStacks).forEach {index ->
-            stacks[index] = Stack()
+            stacks[index] = ArrayDeque()
         }
 
         stackDefinitions.drop(1)
@@ -76,7 +78,7 @@ class SupplyStacks(testInput: String = "") : AdventOfCodePuzzle(testInput) {
                 val positionOfCrateMark = (index - 1) * 4 + 1
                 val crateMark = stackDefinition[positionOfCrateMark]
                 if (crateMark != ' ') {
-                    stacks.getValue(index).push(crateMark)
+                    stacks.getValue(index).add(crateMark)
                 }
             }
         }
