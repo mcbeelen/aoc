@@ -16,6 +16,10 @@ class SupplyStacks(testInput: String = "") : AdventOfCodePuzzle(testInput) {
     val moveInstructions = LinkedList<MoveInstruction>()
     var numberOfStacks = 0
 
+    init {
+        parseInputIntoStacksAndMoveInstructions()
+    }
+
     override fun getAnswerForPartOne(): String {
         parseInputIntoStacksAndMoveInstructions()
         moveInstructions.forEach {moveCratesOneByOne(it) }

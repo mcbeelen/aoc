@@ -17,7 +17,7 @@ class CampCleanupTest {
     @Test
     fun actualPartOne() {
         val puzzle = CampCleanup()
-        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartOne(), equalTo(500))
     }
 
     @Test

@@ -62,7 +62,7 @@ fun toLayer(encodedLayer: String, width: Int, height: Int): Layer {
 
 data class Layer(val pixelMap: Table<Int, Int, PixelColor>) {
     fun colorAt(top: Int, left: Int): PixelColor {
-        return pixelMap.get(top, left)
+        return pixelMap.get(top, left)!!
     }
 
     override fun toString(): String {

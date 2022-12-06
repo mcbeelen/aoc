@@ -31,7 +31,7 @@ class RucksackReorganizationTest {
     @Test
     fun actualPartOne() {
         val puzzle = RucksackReorganization()
-        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartOne(), equalTo(7878))
     }
 
     @Test

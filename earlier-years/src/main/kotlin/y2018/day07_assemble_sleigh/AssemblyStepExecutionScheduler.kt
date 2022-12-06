@@ -174,7 +174,7 @@ class Schedule(private val numberOfWorkers: Int) {
         for (w in 1 .. numberOfWorkers) {
             val worker = Worker(w)
             if (schedule.contains(worker, second)) {
-                report.append("  " + schedule.get(worker,second).describe() + "  ")
+                report.append("  " + schedule.get(worker,second)!!.describe() + "  ")
             } else {
                 report.append("  .  ")
             }

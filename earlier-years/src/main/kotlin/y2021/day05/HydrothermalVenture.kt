@@ -34,7 +34,7 @@ class HydrothermalVenture(testInput: String = "") : AdventOfCodePuzzle(testInput
         ventLines.forEach { ventLine ->
             ventLine.forEach {
                 if (oceanFloor.contains(it.top, it.left)) {
-                    oceanFloor.get(it.top, it.left).incrementAndGet()
+                    oceanFloor.get(it.top, it.left)!!.incrementAndGet()
                 } else {
                     oceanFloor.put(it.top, it.left, AtomicInteger(1))
                 }
