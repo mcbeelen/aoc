@@ -16,6 +16,8 @@ abstract class AdventOfCodePuzzle(
         return@lazy puzzleInput.lines()
     }
 
+    fun readSingleLineInput() = input[0]
+
     open fun getAnswerForPartOne() : String {
         return solvePartOne().toString()
     }
