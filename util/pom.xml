@@ -11,17 +11,11 @@
 
     <artifactId>util</artifactId>
 
-    <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
-    </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>27.0-jre</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <dependency>

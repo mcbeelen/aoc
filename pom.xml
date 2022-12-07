@@ -18,7 +18,11 @@
 
     <properties>
         <arrow.version>0.10.4</arrow.version>
-        <kotlin.version>1.5.10</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <guava.version>31.1-jre</guava.version>
     </properties>
 
 
