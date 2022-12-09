@@ -1,7 +1,7 @@
 package util.grid
 
 
-class Grid<T> : HashMap<ScreenCoordinate, T>() {
+class Grid<T>(val margin : Int = 0) : HashMap<ScreenCoordinate, T>() {
     fun getWidth() = findMaxX(this.keys) + 1
     fun getHeight() = findMaxY(this.keys) + 1
 
@@ -19,10 +19,10 @@ class Grid<T> : HashMap<ScreenCoordinate, T>() {
 
 
 fun <T> plotGrid(grid: Grid<T>, defaultCharForUnknown: Char = ' ', charFor: (T) -> Char) {
-    val findMinY = findMinY(grid.keys)
-    val findMaxY = findMaxY(grid.keys)
-    val findMinX = findMinX(grid.keys)
-    val findMaxX = findMaxX(grid.keys)
+    val findMinY = findMinY(grid.keys) - grid.margin
+    val findMaxY = findMaxY(grid.keys) + grid.margin
+    val findMinX = findMinX(grid.keys) - grid.margin
+    val findMaxX = findMaxX(grid.keys) + grid.margin
 
     for (y in findMinY..findMaxY) {
         print("${y.toString().padStart(8)}: ")

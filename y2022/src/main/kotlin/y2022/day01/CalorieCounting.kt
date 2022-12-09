@@ -10,8 +10,8 @@ class CalorieCounting(testInput: String = "") : AdventOfCodePuzzle(testInput) {
     }
 
     private fun sumCaloriesCarriedByElf(block: String)= block.split("\n")
-            .map { Integer.parseInt(it) }
-            .sum()
+        .map { Integer.parseInt(it) }
+        .sum()
 
 
     override fun solvePartTwo(): Int {

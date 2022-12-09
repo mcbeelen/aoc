@@ -33,6 +33,11 @@ data class Vector(val left: Int = 0, val top: Int = 0) {
         return Vector(left = left + delta.left, top = top + delta.top)
     }
 
+    operator fun minus(movementOfTail: Vector) = this + movementOfTail.reverse()
+
+    private fun reverse() : Vector = this.times(-1)
+
+
     operator fun times(factor: Int): Vector {
         return Vector(left * factor, top * factor)
 
@@ -40,6 +45,11 @@ data class Vector(val left: Int = 0, val top: Int = 0) {
 
     fun rotateClockwise(): Vector = Vector(top.unaryMinus(), left)
     fun rotateCounterClockwise() = Vector(top, left.unaryMinus())
+
+
+    companion object {
+        fun from(from: ScreenCoordinate, to: ScreenCoordinate) = Vector(to.left - to.left, to.top - from.top )
+    }
 }
 
 tailrec fun simplify(vector: Vector): Vector {

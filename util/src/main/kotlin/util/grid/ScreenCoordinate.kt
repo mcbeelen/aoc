@@ -88,6 +88,14 @@ data class ScreenCoordinate(val left: Int = 0, val top: Int = 0) : Comparable<Sc
             else -> DOWN
         }
     }
+
+    override fun hashCode(): Int {
+        var result = left
+        result = 31 * result + top
+        return result
+    }
+
+
 }
 
 fun findMaxX(locations: Set<ScreenCoordinate>) = locations.map { it.left }.maxOrDefault()

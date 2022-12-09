@@ -1,11 +1,12 @@
 package util.grid
 
-enum class Direction {
+enum class Direction(val vector: Vector) {
 
-    UP,
-    RIGHT,
-    DOWN,
-    LEFT;
+    UP(Vector(0, -1)),
+    RIGHT(Vector(1, 0)),
+    DOWN(Vector(0, 1)),
+    LEFT(Vector(-1, 0));
+
 
     fun turn(turn: Turn): Direction {
         return when(turn) {
@@ -45,7 +46,6 @@ enum class Direction {
         DOWN -> UP
         LEFT -> RIGHT
     }
-
 }
 
 fun parseDirection(c: Char): Direction {
