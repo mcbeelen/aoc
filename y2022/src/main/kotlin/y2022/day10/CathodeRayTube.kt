@@ -77,7 +77,7 @@ class CathodeRayTube(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
         val screenCoordinate = ScreenCoordinate(left, top)
         if ((x - 1..x + 1).contains(left)) {
-            crtScreen[screenCoordinate] = '#'
+            crtScreen[screenCoordinate] = '█'
         } else {
             crtScreen[screenCoordinate] = ' '
         }
