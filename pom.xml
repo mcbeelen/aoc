@@ -13,6 +13,7 @@
     <modules>
         <module>util</module>
         <module>y2022</module>
+        <module>y2023</module>
         <module>earlier-years</module>
     </modules>
 
