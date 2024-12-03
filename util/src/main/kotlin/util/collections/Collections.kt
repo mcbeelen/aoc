@@ -16,7 +16,3 @@ fun <T> circularSequence(input: List<T>): Sequence<T> {
 
     }
 }
-
-fun <T> Iterable<T>.toDeque() : ArrayDeque<T> {
-    return ArrayDeque(this.toList());
-}
