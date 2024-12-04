@@ -13,11 +13,11 @@
 
     <modules>
         <module>util</module>
-        <!--
-            <module>y2023</module>
-            <module>y2022</module>
-            <module>earlier-years</module>
-  -->
+<!--
+        <module>y2023</module>
+        <module>y2022</module>
+        <module>earlier-years</module>
+-->
         <module>y2024</module>
     </modules>
 

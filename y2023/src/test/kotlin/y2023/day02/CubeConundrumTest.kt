@@ -11,27 +11,25 @@ class CubeConundrumTest {
     @Test
     fun examplePartOne() {
         val puzzle = CubeConundrum(testInput)
-        assertThat(puzzle.solvePartOne(), equalTo(0))
+        assertThat(puzzle.solvePartOne(), equalTo(8))
     }
 
     @Test
-    @Ignore
     fun actualPartOne() {
         val puzzle = CubeConundrum()
-        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartOne(), equalTo(2156))
     }
 
     @Test
     fun examplePartTwo() {
         val puzzle = CubeConundrum(testInput)
-        assertThat(puzzle.solvePartTwo(), equalTo(0))
+        assertThat(puzzle.solvePartTwo(), equalTo(2286))
     }
 
     @Test
-    @Ignore
     fun actualPartTwo() {
         val puzzle = CubeConundrum()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartTwo(), equalTo(66909))
     }
 
 }
