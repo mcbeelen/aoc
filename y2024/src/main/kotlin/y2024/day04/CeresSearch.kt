@@ -1,6 +1,5 @@
 package y2024.day04
 
-import arrow.core.getOption
 import util.grid.*
 import util.grid.Direction.*
 import util.puzzle.AdventOfCodePuzzle
@@ -32,7 +31,7 @@ class CeresSearch(testInput: String = "") : AdventOfCodePuzzle(testInput) {
     }
 
     private fun doesHaveLetterAt(coordinate: ScreenCoordinate, letter: Char) =
-        gridLetters.getOption(coordinate).exists {it == letter}
+        gridLetters.getOrElse(coordinate) { return false } == letter
 
     override fun solvePartTwo(): Int {
         return gridLetters

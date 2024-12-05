@@ -1,8 +1,7 @@
 package util.space
 
-import arrow.core.Option
-import arrow.core.extensions.list.monadFilter.filterMap
 import util.space.Sector.*
+import java.util.*
 import kotlin.math.abs
 
 val ORIGIN = Point(0, 0, 0)
@@ -21,12 +20,14 @@ data class Point(val x: Int, val y: Int, val z: Int) {
             (-1..1).map { y ->
                 (-1..1).map { z ->
                     if ((x == y) && (x == z) && (x == 0)) {
-                        Option.empty()
+                        Optional.empty()
                     } else
-                        Option.just(Point(this.x + x, this.y + y, this.z + z))
+                        Optional.of(Point(this.x + x, this.y + y, this.z + z))
                 }
             }.flatten()
-        }.flatten().filterMap { it }
+        }.flatten()
+            .filter{ it.isPresent }
+            .map { it.get() }
     }
 }
 

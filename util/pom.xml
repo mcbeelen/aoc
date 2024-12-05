@@ -23,7 +23,7 @@
             <artifactId>hamkrest</artifactId>
             <version>1.7.0.0</version>
         </dependency>
-
+<!--
         <dependency>
             <groupId>io.arrow-kt</groupId>
             <artifactId>arrow-core</artifactId>
@@ -34,7 +34,7 @@
             <artifactId>arrow-syntax</artifactId>
             <version>${arrow.version}</version>
         </dependency>
-
+-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

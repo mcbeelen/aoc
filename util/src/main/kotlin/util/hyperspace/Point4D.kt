@@ -1,7 +1,7 @@
 package util.hyperspace
 
-import arrow.core.Option
-import arrow.core.extensions.list.monadFilter.filterMap
+import java.util.Optional
+
 
 data class Point4D(val x: Int, val y: Int, val z: Int, val w : Int = 0) {
     fun neighbors(): List<Point4D> {
@@ -10,12 +10,14 @@ data class Point4D(val x: Int, val y: Int, val z: Int, val w : Int = 0) {
                 (-1..1).map { z ->
                     (-1..1).map { w ->
                         if ((x == y) && (x == z) && (x == w) && (x == 0)) {
-                            Option.empty()
+                            Optional.empty()
                         } else
-                            Option.just(Point4D(this.x + x, this.y + y, this.z + z, this.w + w))
+                            Optional.of(Point4D(this.x + x, this.y + y, this.z + z, this.w + w))
                     }
                 }.flatten()
             }.flatten()
-        }.flatten().filterMap { it }
+        }.flatten()
+            .filter { it.isPresent }
+            .map { it.get() }
     }
 }
