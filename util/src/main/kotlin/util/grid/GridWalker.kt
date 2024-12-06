@@ -1,9 +1,10 @@
 package util.grid
 
 
-open class GridWalker {
-    var currentPosition: ScreenCoordinate = ORIGIN
-    var direction: Direction = Direction.UP
+open class GridWalker(private var currentPosition: ScreenCoordinate = ORIGIN,
+                      private var direction: Direction = Direction.UP) {
+
+
 
     protected fun turnAndMove(turn: Turn, callback: (ScreenCoordinate) -> Unit = {}) {
         turn(turn)
@@ -29,7 +30,11 @@ open class GridWalker {
 
     fun move(distance: Int) {
         currentPosition = currentPosition.next(direction, distance)
-
     }
 
+    fun getCurrentPosition(): ScreenCoordinate = currentPosition
+
+    fun getNextPosition(distance: Int = 1) = currentPosition.next(direction, distance)
+
+    override fun toString() = "At ${currentPosition} facing ${direction}"
 }

@@ -11,14 +11,13 @@ class GuardGallivantTest {
     @Test
     fun examplePartOne() {
         val puzzle = GuardGallivant(testInput)
-        assertThat(puzzle.solvePartOne(), equalTo(0))
+        assertThat(puzzle.solvePartOne(), equalTo(41))
     }
 
     @Test
-    @Ignore
     fun actualPartOne() {
         val puzzle = GuardGallivant()
-        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartOne(), equalTo(4515))
     }
 
     @Test
@@ -37,4 +36,13 @@ class GuardGallivantTest {
 }
 
 
-private const val testInput = """PASTE_HERE"""
+private const val testInput = """....#.....
+.........#
+..........
+..#.......
+.......#..
+..........
+.#..^.....
+........#.
+#.........
+......#..."""

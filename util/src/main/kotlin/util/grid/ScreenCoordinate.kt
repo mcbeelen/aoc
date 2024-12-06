@@ -71,7 +71,7 @@ data class ScreenCoordinate(val left: Int = 0, val top: Int = 0) : Comparable<Sc
         at(this.left - 0, this.top + 1),
     )
     fun next(vector: Vector) = copy(this.left + vector.left, this.top + vector.top)
-    fun next(direction: Direction, distance: Int): ScreenCoordinate {
+    fun next(direction: Direction, distance: Int = 1): ScreenCoordinate {
         return when (direction) {
             UP -> copy(top = top - distance)
             RIGHT -> copy(left = left + distance)
