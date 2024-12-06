@@ -14,6 +14,12 @@ class Grid<T>(val margin : Int = 0) : HashMap<ScreenCoordinate, T>() {
         .map { Pair(it, this.getValue(it)) }
 
     fun bottomRight() : ScreenCoordinate = ScreenCoordinate(findMaxX(this.keys), findMaxY(this.keys))
+
+    override fun clone(): Grid<T> {
+        val result = Grid<T>()
+        result.putAll(this)
+        return result
+    }
 }
 
 

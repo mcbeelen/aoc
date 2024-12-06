@@ -1,5 +1,7 @@
 package util.grid
 
+import java.util.*
+
 
 open class GridWalker(private var currentPosition: ScreenCoordinate = ORIGIN,
                       private var direction: Direction = Direction.UP) {
@@ -37,4 +39,14 @@ open class GridWalker(private var currentPosition: ScreenCoordinate = ORIGIN,
     fun getNextPosition(distance: Int = 1) = currentPosition.next(direction, distance)
 
     override fun toString() = "At ${currentPosition} facing ${direction}"
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null) return false
+        if (this === other) return true
+        if (javaClass != other.javaClass) return false
+        other as GridWalker
+        return this.currentPosition == other.currentPosition && this.direction == other.direction
+    }
+
+    override fun hashCode() = Objects.hash(currentPosition, direction)
 }
