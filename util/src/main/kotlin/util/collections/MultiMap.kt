@@ -1,10 +1,12 @@
 package util.collections
 
+import java.util.LinkedHashSet
+
 class MultiMap<K, V> {
     val map = HashMap<K, MutableSet<V>>()
     fun put(key: K, value: V) {
         if (!map.containsKey(key)) {
-            map[key] = HashSet()
+            map[key] = LinkedHashSet()
         }
         map[key]?.add(value)
     }
@@ -18,4 +20,8 @@ class MultiMap<K, V> {
 
     fun containsKey(key: K): Boolean = map.contains(key)
     fun getKeys() = map.keys
+
+    override fun toString(): String {
+        return this.map.toString()
+    }
 }

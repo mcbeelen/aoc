@@ -35,7 +35,7 @@ data class Vector(val left: Int = 0, val top: Int = 0) {
 
     operator fun minus(movementOfTail: Vector) = this + movementOfTail.reverse()
 
-    private fun reverse() : Vector = this.times(-1)
+    fun reverse() : Vector = this.times(-1)
 
 
     operator fun times(factor: Int): Vector {
