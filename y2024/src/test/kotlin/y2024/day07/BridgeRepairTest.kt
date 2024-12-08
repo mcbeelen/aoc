@@ -15,9 +15,6 @@ class BridgeRepairTest {
     fun singleValue() {
         assertTrue(equationCanBeSolved(4L, listOf(4L)))
         assertFalse(equationCanBeSolved(1L, listOf(4L)))
-
-        // Negative aren't solvable
-        assertFalse(equationCanBeSolved(-1L, listOf()))
     }
 
     @Test
@@ -39,6 +36,12 @@ class BridgeRepairTest {
     }
 
     @Test
+    fun missingSolvableAfterRefactor() {
+        assertThat(BridgeRepair("23645: 44 67 8 61").getAnswerForPartOne(), equalTo("23645"))
+        assertThat(BridgeRepair("13193910: 44 67 8 61 558 1").getAnswerForPartOne(), equalTo("13193910"))
+    }
+
+    @Test
     fun examplePartOne() {
         val puzzle = BridgeRepair(testInput)
         assertThat(puzzle.getAnswerForPartOne(), equalTo("3749"))
@@ -48,6 +51,7 @@ class BridgeRepairTest {
     fun actualPartOne() {
         val puzzle = BridgeRepair()
         assertThat(puzzle.getAnswerForPartOne(), equalTo("42283209483350"))
+
     }
 
     @Test
@@ -66,10 +70,9 @@ class BridgeRepairTest {
     }
 
     @Test
-    @Ignore
     fun actualPartTwo() {
         val puzzle = BridgeRepair()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.getAnswerForPartTwo(), equalTo("1026766857276279"))
     }
 
 }

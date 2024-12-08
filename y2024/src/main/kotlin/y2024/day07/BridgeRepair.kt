@@ -18,51 +18,35 @@ enum class Operation {
         }
     }
 
-    fun perform(result: Long, numbers: List<Long>): Pair<Long, List<Long>> {
-        val last = numbers.last()
-        val remainingValues = numbers.dropLast(1)
-        when (this) {
-            ADD -> return Pair(result - last, remainingValues)
-            MULTIPLY -> if (result.mod(last) == 0L) {
-                return Pair(result / last, remainingValues)
-            } else {
-                return Pair(Long.MIN_VALUE, emptyList())
-            }
-            CONCATENATE -> {
-                val concatenatedValues = CONCATENATE.execute(remainingValues.last(), last)
-                return Pair(result, remainingValues.drop(1).plus(concatenatedValues))
-            }
-        }
-    }
-
 }
 
 
 fun equationCanBeSolved(
     result: Long,
-    values: List<Long>,
-    allowedOperations: Set<Operation> = setOf(ADD, MULTIPLY)
+    numbers: List<Long>,
+    allowedOperations: List<Operation> = listOf(MULTIPLY, ADD)
 ): Boolean {
 
-    println("Checking ${values} to yield ${result}")
-
-    if (result <= 0) return false
-
-    val first = values.first()
-    if (values.size == 1) {
+    val first = numbers.first()
+    if (numbers.size == 1) {
         return result == first
     }
 
-    val second = values[1]
-    if (values.size == 2) {
-        return allowedOperations.any {
+    if (first > result) {
+        return false
+    }
+    val second = numbers[1]
+    if (numbers.size == 2) {
+        val finalOperation = allowedOperations.find {
             it.execute(first, second) == result
         }
+        return finalOperation != null
     }
 
     return allowedOperations.any {
-        val appliedOperations = it.perform(result, values)
-        equationCanBeSolved(appliedOperations.first, appliedOperations.second, allowedOperations)
+        val calculatedValue = it.execute(first, second)
+        val updatedValues = listOf(calculatedValue).plus(numbers.drop(2))
+        equationCanBeSolved(result, updatedValues, allowedOperations)
     }
 
 
@@ -72,31 +56,35 @@ class BridgeRepair(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
     override fun getAnswerForPartOne(): String {
 
-        val allowOperations = setOf(Operation.ADD, MULTIPLY)
+        val allowOperations = listOf(MULTIPLY, ADD)
 
         return input
-            .map { splitIntoResultAndValues(it) }
+            .map { splitIntoResultAndNumbers(it) }
             .filter { equationCanBeSolved(it.first, it.second, allowOperations) }
-            .map { it.first }
+            .map {
+                println("Solvable: ${it}")
+                it.first
+
+            }
             .sum()
             .toString()
     }
 
-    private fun splitIntoResultAndValues(equation: String): Pair<Long, List<Long>> {
+    private fun splitIntoResultAndNumbers(equation: String): Pair<Long, List<Long>> {
         val result = equation.substringBefore(":").toLong()
-        val values = equation.substringAfter(": ")
+        val numbers = equation.substringAfter(": ")
             .trim()
             .split(" ")
             .map { it.toLong() }
-        return Pair(result, values)
+        return Pair(result, numbers)
 
     }
 
     override fun getAnswerForPartTwo(): String {
-        val allowOperations = setOf(ADD, MULTIPLY, CONCATENATE)
+        val allowOperations = listOf(MULTIPLY, CONCATENATE, ADD)
 
         return input
-            .map { splitIntoResultAndValues(it) }
+            .map { splitIntoResultAndNumbers(it) }
             .filter { equationCanBeSolved(it.first, it.second, allowOperations) }
             .map { it.first }
             .sum()
