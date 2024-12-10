@@ -11,6 +11,10 @@ class MultiMap<K, V> {
         map[key]?.add(value)
     }
 
+    fun putAll(key: K, values: Iterable<V>) {
+        values.forEach { put(key, it) }
+    }
+
     fun get(key: K): Set<V> {
         if (!map.containsKey(key)) {
             return setOf()
