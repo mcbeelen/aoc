@@ -16,7 +16,7 @@ class FreeBlock(private val p: Long, private val s : Int) : Block(p, s) {
     override fun toString()= ".".repeat(size)
 }
 
-class BlockedDisk(diskMap: String) {
+class BlockedDisk(private val diskMap: String) {
     val blocks : MutableList<Block> by lazy {
         parseDiskMap()
     }

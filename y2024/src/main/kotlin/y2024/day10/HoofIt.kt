@@ -65,4 +65,24 @@ class HoofIt(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         }
     }
 
+    override fun solvePartTwo() : Int {
+        return elevationMap
+            .get(0)
+            .map { calculateRating(it) }
+            .sum()
+    }
+
+    private fun calculateRating(position: ScreenCoordinate) : Int {
+        val heightOfCurrentPosition = topographicMap.getValue(position)
+        return if (heightOfCurrentPosition == 9) {
+            1
+        } else {
+            position.allNeighbors()
+                .filter { topographicMap.containsKey(it) }
+                .filter { topographicMap.getValue(it) == heightOfCurrentPosition + 1 }
+                .map { calculateRating(it) }
+                .sum()
+        }
+    }
+
 }

@@ -60,6 +60,25 @@ class HoofItTest {
         assertThat(puzzle.solvePartOne(), equalTo(744))
     }
 
+    @Test
+    fun examplePartTwo() {
+        val puzzle = HoofIt("""..90..9
+...1.98
+...2..7
+6543456
+765.987
+876....
+987....""")
+
+        assertThat(puzzle.solvePartTwo(), equalTo(13))
+    }
+
+    @Test
+    fun actualPartTwo() {
+        val puzzle = HoofIt()
+        assertThat(puzzle.solvePartTwo(), equalTo(1651))
+    }
+
 }
 
 
