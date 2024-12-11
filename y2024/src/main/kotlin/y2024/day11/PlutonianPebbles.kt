@@ -25,7 +25,6 @@ class PlutonianPebbles(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         var updatedLineOfStones = frequencyPerValue
         for (i in 0 until 75) {
             updatedLineOfStones = blinkWithFrequencies(updatedLineOfStones)
-            println(updatedLineOfStones.toSortedMap())
         }
 
         return updatedLineOfStones
