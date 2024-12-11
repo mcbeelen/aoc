@@ -9,32 +9,38 @@ import kotlin.Int.Companion.MIN_VALUE
 class PlutonianPebblesTest {
 
     @Test
+    fun sampleBlinks() {
+        assertThat(blink(listOf(125L, 17L)), equalTo(listOf(253000L, 1L, 7L)))
+        assertThat(blink(listOf(125L, 17L), 2), equalTo(listOf(253L, 0L, 2024L, 14168L)))
+        val result = parseLineOfStones("1036288 7 2 20 24 4048 1 4048 8096 28 67 60 32")
+        assertThat(blink(listOf(125L, 17L), 5), equalTo(result))
+    }
+
+    @Test
+    fun subSteps() {
+        assertThat(blink(listOf(0L), 5), equalTo(parseLineOfStones("4048 1 4048 8096")))
+        assertThat(blink(listOf(1L), 15), equalTo(parseLineOfStones("6072 4048 14168 14168 4048 12144 32772608 40 48 2024 40 48 80 96 6072 12144 16192 12144 18216 2024 16192 8096 4048 8096 10120 14168 18216 8096 10120 12144 80 96 2024 80 96 32772608 4048 1 4048 8096 80 96 2024 80 96 32772608 32772608 2024 36869184 24579456 6072 4048 14168 14168 4048 12144 32772608 40 48 2024 40 48 80 96 6072 12144 16192 12144 18216 2024 16192 8096 4048 8096 10120 14168 18216 8096 10120 12144 12144 1 14168 4048 8096 1 8096 16192 28 67 60 32 28 67 60 32 8096 1 8096 16192 24 57 94 56 3 2 7 7 2 6 16192 32772608 2024 36869184 24579456 4048 1 4048 8096 32772608 2024 36869184 24579456 3 2 7 7 2 6 16192 8096 1 8096 16192 2 0 2 4 8096 1 8096 16192 16192 1 18216 12144 32772608 2024 36869184 24579456 4048 1 4048 8096 32772608 2024 36869184 24579456 3 2 7 7 2 6 16192 3 2 7 7 2 6 16192 4048 1 4048 8096 3 6 8 6 9 1 8 4 2 4 5, 7 9 4 5, 6 6072 4048 14168 14168 4048 12144 32772608 40 48 2024 40 48 80 96 6072 12144 16192 12144 18216 2024 16192 8096 4048 8096 10120 14168 18216 8096 10120 12144 80 96 2024 80 96 32772608 4048 1 4048 8096 80 96 2024 80 96 32772608 32772608 2024 36869184 24579456 6072 4048 14168 14168 4048 12144 32772608 40 48 2024 40 48 80 96 6072 12144 16192 12144 18216 2024 16192 8096 4048 8096 10120 14168 18216 8096 10120 12144 12144 1 14168 4048 8096 1 8096 16192 28 67 60 32 28 67 60 32 8096 1 8096 16192 24 57 94 56 3 2 7 7 2 6 16192 12144 1 14168 4048 8096 1 8096 16192 28 67 60 32 28 67 60 32 8096 1 8096 16192 24 57 94 56 3 2 7 7 2 6 16192 80 96 2024 80 96 32772608 4048 1 4048 8096 80 96 2024 80 96 32772608 32772608 2024 36869184 24579456 12144 1 14168 4048 24 57 94 56 32 77 26 8 24 57 94 56 36 86 91 84 4048 1 4048 8096 32 77 26 8 16192 1 18216 12144 8096 1 8096 16192 16192 1 18216 12144 20 48 28 80 28 67 60 32 36 86 91 84 16192 1 18216 12144 20 48 28 80 24 57 94 56")))
+    }
+
+    @Test
     fun examplePartOne() {
         val puzzle = PlutonianPebbles(testInput)
-        assertThat(puzzle.solvePartOne(), equalTo(0))
+        assertThat(puzzle.solvePartOne(), equalTo(55312))
     }
 
     @Test
-    @Ignore
     fun actualPartOne() {
         val puzzle = PlutonianPebbles()
-        assertThat(puzzle.solvePartOne(), equalTo(MIN_VALUE))
+        assertThat(puzzle.solvePartOne(), equalTo(194482))
     }
 
     @Test
-    fun examplePartTwo() {
-        val puzzle = PlutonianPebbles(testInput)
-        assertThat(puzzle.solvePartTwo(), equalTo(0))
-    }
-
-    @Test
-    @Ignore
     fun actualPartTwo() {
         val puzzle = PlutonianPebbles()
-        assertThat(puzzle.solvePartTwo(), equalTo(MIN_VALUE))
+        assertThat(puzzle.getAnswerForPartTwo(), equalTo("232454623677743"))
     }
 
 }
 
 
-private const val testInput = """PASTE_HERE"""
+private const val testInput = """125 17"""
