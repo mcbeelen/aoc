@@ -25,11 +25,11 @@ abstract class AdventOfCodePuzzle(
     open fun getAnswerForPartTwo() : String {
         return solvePartTwo().toString()
     }
-    open fun solvePartOne() : Int {
+    open fun solvePartOne() : Number {
         TODO("No solution for part one yet")
     }
 
-    open fun solvePartTwo() : Int {
+    open fun solvePartTwo() : Number {
         TODO("No solution for part two yet")
     }
 
