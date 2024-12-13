@@ -24,12 +24,10 @@ class Region(val identifier: Char) {
             .sum().toLong()
     }
 
-    fun getPrice() : Long {
+    fun getPrice(): Long {
         val area = calculateArea()
         val perimeter = calculatePerimeter()
-        val price = area * perimeter
-        println("Region ${identifier}: ${area} * ${perimeter} --> ${price}")
-        return price
+        return area * perimeter
     }
 
 

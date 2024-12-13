@@ -16,13 +16,21 @@ class GardenGroups(testInput: String = "") : AdventOfCodePuzzle(testInput) {
      }
 
     override fun solvePartOne(): Number {
+        val foundRegions = discoverRegionsInTheGarden()
+
+        return foundRegions
+            .map { it.calculateArea() * it.calculatePerimeter() }
+            .sum()
+
+    }
+
+    private fun discoverRegionsInTheGarden() : List<Region> {
+        val foundRegions = mutableListOf<Region>()
 
         val processedPlots = mutableSetOf<ScreenCoordinate>()
-
-        val foundRegions = mutableListOf<Region>()
         garden.entries.forEach { plot ->
             val currentPlot = plot.key
-            if (! processedPlots.contains(currentPlot)) {
+            if (!processedPlots.contains(currentPlot)) {
                 val newRegion = Region(plot.value)
                 newRegion.addPlot(currentPlot)
                 foundRegions.add(newRegion)
@@ -31,7 +39,7 @@ class GardenGroups(testInput: String = "") : AdventOfCodePuzzle(testInput) {
                 val plotsToScan = Stack<ScreenCoordinate>()
                 plotsToScan.push(currentPlot)
 
-                while (! plotsToScan.isEmpty()) {
+                while (!plotsToScan.isEmpty()) {
 
                     val plotToScan = plotsToScan.pop()
                     val neighboursInSameRegion = plotToScan.allNeighbors()
@@ -43,17 +51,10 @@ class GardenGroups(testInput: String = "") : AdventOfCodePuzzle(testInput) {
 
                     plotsToScan.pushAll(neighboursInSameRegion)
                 }
-
-                println("Found a new region: ${newRegion.identifier} --> ${newRegion.plots}")
-
             }
 
         }
-
         return foundRegions
-            .map { it.calculateArea() * it.calculatePerimeter() }
-            .sum()
-
     }
 
     override fun solvePartTwo(): Int {
