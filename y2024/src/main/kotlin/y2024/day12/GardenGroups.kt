@@ -57,8 +57,12 @@ class GardenGroups(testInput: String = "") : AdventOfCodePuzzle(testInput) {
         return foundRegions
     }
 
-    override fun solvePartTwo(): Int {
-        TODO("Solve me")
+    override fun solvePartTwo(): Long {
+        val foundRegions = discoverRegionsInTheGarden()
+
+        return foundRegions
+            .map { it.calculateArea() * it.countSides() }
+            .sum()
     }
 }
 

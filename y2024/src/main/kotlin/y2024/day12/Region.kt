@@ -30,5 +30,9 @@ class Region(val identifier: Char) {
         return area * perimeter
     }
 
+    fun countSides(): Long {
+        TODO("Not imlemented yet")
+    }
+
 
 }
